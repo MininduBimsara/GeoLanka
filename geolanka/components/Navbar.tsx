@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon, MapPin, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { useTheme } from "@/components/ThemeProvider";
 
 const GeoLankaNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   // Handle scroll effect
@@ -19,14 +19,8 @@ const GeoLankaNavbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Apply dark mode to document
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
+const { isDarkMode, toggleTheme } = useTheme();
+
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -97,7 +91,7 @@ const GeoLankaNavbar = () => {
           <div className="flex items-center space-x-4">
             {/* Dark Mode Toggle */}
             <motion.button
-              onClick={() => setIsDarkMode(!isDarkMode)}
+              onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

@@ -195,7 +195,7 @@ const ImpactStatistics: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
       {/* Background Geometric Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-stone-100 opacity-50 blur-3xl rounded-full" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-emerald-100 opacity-40 blur-2xl rounded-full" />

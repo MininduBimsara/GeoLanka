@@ -13,6 +13,7 @@ import {
   MapPin,
 } from "lucide-react";
 import Link from "next/link";
+import { useTheme } from "@/components/ThemeProvider";
 
 const GeoLankaFooter = () => {
   const Logo = () => (
@@ -33,6 +34,7 @@ const GeoLankaFooter = () => {
       </motion.div>
     </Link>
   );
+  const { isDarkMode } = useTheme(); // You can use this if you need to conditionally render anything based on theme
 
   const platformLinks = [
     { name: "Features", href: "/features" },

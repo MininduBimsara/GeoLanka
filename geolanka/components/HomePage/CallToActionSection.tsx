@@ -52,7 +52,7 @@ const CallToActionSection: React.FC = () => {
   };
 
   return (
-    <section className="relative py-20 overflow-hidden bg-white">
+    <section className="relative py-20 overflow-hidden bg-white dark:bg-gray-900">
       {/* Map Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30"

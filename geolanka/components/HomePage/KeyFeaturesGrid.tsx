@@ -127,7 +127,7 @@ const KeyFeaturesGrid: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50 relative overflow-hidden">
+    <section className="py-20  relative overflow-hidden">
       {/* Background Geometric Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-100 rounded-full opacity-20 blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-stone-200 rounded-full opacity-30 blur-2xl" />

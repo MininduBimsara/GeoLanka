@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import GeoLankaNavbar from "@/components/Navbar";
 import GeoLankaFooter from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,14 +62,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${playfairDisplay.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        {/* Navbar will appear on all pages */}
-        <GeoLankaNavbar />
+        <ThemeProvider>
+          {/* Navbar will appear on all pages */}
+          <GeoLankaNavbar />
 
-        {/* Main content with proper spacing for fixed navbar */}
-        <div className="pt-20">{children}</div>
+          {/* Main content with proper spacing for fixed navbar */}
+          <div className="pt-20">{children}</div>
 
-        {/* Footer will appear on all pages */}
-        <GeoLankaFooter />
+          {/* Footer will appear on all pages */}
+          <GeoLankaFooter />
+        </ThemeProvider>
       </body>
     </html>
   );
