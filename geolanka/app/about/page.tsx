@@ -11,10 +11,9 @@ export default function About() {
     <main>
       {/* <AboutSection/> */}
       <HeroSection />
-      <ChallengesSection />
-
-      <ImpactSection />
       <MissionSection />
+      <ChallengesSection />
+      <ImpactSection />
     </main>
   );
 }

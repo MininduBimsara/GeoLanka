@@ -4,151 +4,115 @@ import { motion } from "framer-motion";
 
 const impactAreas = [
   {
-    title: "Business Innovation",
-    description:
-      "Enabling new business models through comprehensive geospatial intelligence",
+    title: "Business Growth",
+    description: "New models through geospatial intelligence",
     image:
-      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
   },
   {
-    title: "Economic Growth",
-    description:
-      "Supporting logistics, tourism, and technology sectors with location services",
+    title: "Economic Development",
+    description: "Supporting tourism and technology sectors",
     image:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
   },
   {
     title: "Smart Cities",
-    description:
-      "Foundation for intelligent urban planning and IoT-enabled infrastructure",
+    description: "Foundation for intelligent urban planning",
     image:
-      "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
   },
   {
-    title: "Digital Inclusion",
-    description: "Making advanced mapping technology accessible to all sectors",
+    title: "Digital Access",
+    description: "Making technology accessible to all",
     image:
-      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
   },
 ];
 
-const nationalImpact = [
-  { label: "Technology adoption rate", value: "95%+" },
-  { label: "Platform uptime guarantee", value: "99.9%" },
-  { label: "Active users supported", value: "50K+" },
-  { label: "Innovation benchmark score", value: "98%" },
+const impactStats = [
+  { number: "50K+", label: "Active Users" },
+  { number: "99.9%", label: "Accuracy Rate" },
+  { number: "226,000", label: "Data Points" },
 ];
 
 export function ImpactSection() {
   return (
-    <section className="min-h-screen bg-white py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Content */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full border border-emerald-200">
-                <span className="font-medium text-sm tracking-wide uppercase">
-                  Innovation & Impact
-                </span>
-              </div>
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-6xl mx-auto text-center">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <h2 className="text-4xl lg:text-6xl font-serif font-bold text-gray-800 mb-6">
+            Our Impact
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Driving Sri Lanka's digital transformation through advanced mapping
+            technology
+          </p>
+        </motion.div>
 
-              <div>
-                <h2 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-4">
-                  Driving Sri Lanka's Digital Future
-                </h2>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Advanced mapping technology creating new opportunities for
-                  economic growth and technological advancement.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              {impactAreas.map((impact, index) => (
-                <motion.div
-                  key={impact.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 + index * 0.15 }}
-                  className="group"
-                >
-                  <div className="bg-emerald-50 backdrop-blur-md rounded-lg p-4 border border-emerald-200 hover:bg-emerald-100 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-12 h-12 rounded-lg overflow-hidden shadow-lg">
-                        <img
-                          src={impact.image}
-                          alt={impact.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                      <h3 className="font-semibold text-gray-800 text-lg">
-                        {impact.title}
-                      </h3>
-                    </div>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {impact.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-8 p-6 bg-white/10 backdrop-blur-md rounded-lg border border-white/20"
+        {/* Impact Areas Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
+        >
+          {impactAreas.map((impact, index) => (
+            <div
+              key={impact.title}
+              className="bg-gray-50 rounded-2xl overflow-hidden hover:bg-gray-100 transition-colors"
             >
-              <p className="text-white text-xl font-medium text-center italic drop-shadow-md">
-                "Because advanced geospatial technology is not just
-                innovation—it's transformation."
-              </p>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Dashboard */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:mt-16"
-          >
-            <div className="bg-white rounded-2xl p-8 shadow-2xl border border-gray-200">
-              <h4 className="text-2xl font-bold text-gray-800 mb-6">
-                National Impact
-              </h4>
-              <div className="space-y-6">
-                {nationalImpact.map((item, index) => (
-                  <motion.div
-                    key={item.label}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    className="flex justify-between items-start"
-                  >
-                    <span className="font-medium text-gray-600">
-                      {item.label}:
-                    </span>
-                    <span className="text-right text-sm font-semibold text-gray-800">
-                      {item.value}
-                    </span>
-                  </motion.div>
-                ))}
+              <img
+                src={impact.image}
+                alt={impact.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="font-semibold text-lg text-gray-800 mb-2">
+                  {impact.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{impact.description}</p>
               </div>
             </div>
-          </motion.div>
-        </div>
+          ))}
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="grid md:grid-cols-3 gap-12 mb-16"
+        >
+          {impactStats.map((stat, index) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-5xl font-bold text-emerald-600 mb-2">
+                {stat.number}
+              </div>
+              <div className="text-lg text-gray-600">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors">
+            Start Your Journey to Smart Mapping
+          </button>
+        </motion.div>
       </div>
     </section>
   );
