@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Globe, Eye, Shield, Settings, AlertTriangle } from "lucide-react";

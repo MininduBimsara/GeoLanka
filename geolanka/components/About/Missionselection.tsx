@@ -2,44 +2,43 @@
 
 import { motion } from "framer-motion";
 
-const impactAreas = [
+const focusAreas = [
   {
-    title: "Business Innovation",
-    description:
-      "Enabling new business models through comprehensive geospatial intelligence",
+    title: "Agriculture",
+    description: "Help farmers monitor crop areas and prevent encroachment",
     image:
       "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=100&h=100&fit=crop",
   },
   {
-    title: "Economic Growth",
-    description:
-      "Supporting logistics, tourism, and technology sectors with location services",
+    title: "Flood Zones",
+    description: "Identify high-risk areas for disaster preparedness",
     image:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=100&h=100&fit=crop",
   },
   {
-    title: "Smart Cities",
-    description:
-      "Foundation for intelligent urban planning and IoT-enabled infrastructure",
+    title: "Sustainable Land Use",
+    description: "Track deforestation and protected zones",
     image:
-      "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=100&h=100&fit=crop",
   },
   {
-    title: "Digital Inclusion",
-    description: "Making advanced mapping technology accessible to all sectors",
+    title: "Government Support",
+    description: "Assist agencies with urban planning decisions",
     image:
-      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=100&h=100&fit=crop",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=100&h=100&fit=crop",
   },
 ];
 
-const nationalImpact = [
-  { label: "Technology adoption rate", value: "95%+" },
-  { label: "Platform uptime guarantee", value: "99.9%" },
-  { label: "Active users supported", value: "50K+" },
-  { label: "Innovation benchmark score", value: "98%" },
+const missionScope = [
+  {
+    label: "Target Sectors",
+    value: "Agriculture, Environment, Planning, NGOs",
+  },
+  { label: "Coverage Areas", value: "Across Sri Lanka" },
+  { label: "Key Stakeholders", value: "Government, Farmers, Private Sector" },
 ];
 
-export function ImpactSection() {
+export function MissionSection() {
   return (
     <section className="min-h-screen bg-white py-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -55,25 +54,25 @@ export function ImpactSection() {
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full border border-emerald-200">
                 <span className="font-medium text-sm tracking-wide uppercase">
-                  Innovation & Impact
+                  Our Mission
                 </span>
               </div>
 
               <div>
-                <h2 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-4">
-                  Driving Sri Lanka's Digital Future
-                </h2>
+                <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 mb-4">
+                  Empowering Sri Lanka with Intelligent Geo-Mapping Solutions
+                </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Advanced mapping technology creating new opportunities for
-                  economic growth and technological advancement.
+                  Supporting sustainable agriculture, protecting vulnerable
+                  regions, and guiding responsible land use across Sri Lanka.
                 </p>
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
-              {impactAreas.map((impact, index) => (
+              {focusAreas.map((area, index) => (
                 <motion.div
-                  key={impact.title}
+                  key={area.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -84,35 +83,22 @@ export function ImpactSection() {
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-12 h-12 rounded-lg overflow-hidden shadow-lg">
                         <img
-                          src={impact.image}
-                          alt={impact.title}
+                          src={area.image}
+                          alt={area.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
                       <h3 className="font-semibold text-gray-800 text-lg">
-                        {impact.title}
+                        {area.title}
                       </h3>
                     </div>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      {impact.description}
+                      {area.description}
                     </p>
                   </div>
                 </motion.div>
               ))}
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-8 p-6 bg-white/10 backdrop-blur-md rounded-lg border border-white/20"
-            >
-              <p className="text-white text-xl font-medium text-center italic drop-shadow-md">
-                "Because advanced geospatial technology is not just
-                innovation—it's transformation."
-              </p>
-            </motion.div>
           </motion.div>
 
           {/* Right Dashboard */}
@@ -125,10 +111,10 @@ export function ImpactSection() {
           >
             <div className="bg-white rounded-2xl p-8 shadow-2xl border border-gray-200">
               <h4 className="text-2xl font-bold text-gray-800 mb-6">
-                National Impact
+                Mission Scope
               </h4>
               <div className="space-y-6">
-                {nationalImpact.map((item, index) => (
+                {missionScope.map((item, index) => (
                   <motion.div
                     key={item.label}
                     initial={{ opacity: 0, y: 10 }}
@@ -140,7 +126,7 @@ export function ImpactSection() {
                     <span className="font-medium text-gray-600">
                       {item.label}:
                     </span>
-                    <span className="text-right text-sm font-semibold text-gray-800">
+                    <span className="text-right text-gray-800 font-semibold max-w-[60%]">
                       {item.value}
                     </span>
                   </motion.div>
