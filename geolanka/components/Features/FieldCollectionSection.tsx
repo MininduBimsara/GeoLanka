@@ -22,7 +22,7 @@ const FieldCollectionSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden transition-colors duration-300">
       {/* Background with map and geometric overlays */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -34,13 +34,13 @@ const FieldCollectionSection = () => {
 
       {/* Geometric overlays */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-emerald-800/85 to-emerald-900/85"
+        className="absolute inset-0 bg-gradient-to-r from-emerald-800/85 dark:from-emerald-900/90 to-emerald-900/85 dark:to-emerald-950/90"
         style={{
           clipPath: "polygon(0 0, 65% 0, 45% 100%, 0 100%)",
         }}
       />
       <div
-        className="absolute inset-0 bg-gradient-to-l from-stone-200/90 to-stone-300/90"
+        className="absolute inset-0 bg-gradient-to-l from-stone-200/90 dark:from-gray-800/90 to-stone-300/90 dark:to-gray-700/90"
         style={{
           clipPath: "polygon(45% 0, 100% 0, 100% 100%, 25% 100%)",
         }}
@@ -50,7 +50,7 @@ const FieldCollectionSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           {/* Content */}
           <motion.div
-            className="text-white lg:text-gray-800 space-y-8"
+            className="text-white lg:text-gray-800 lg:dark:text-gray-200 space-y-8 transition-colors duration-300"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -60,7 +60,7 @@ const FieldCollectionSection = () => {
               <h1 className="text-4xl lg:text-6xl font-serif font-bold mb-4">
                 Field Data Collection,
                 <br />
-                <span className="text-emerald-400 lg:text-emerald-700">
+                <span className="text-emerald-400 lg:text-emerald-700 lg:dark:text-emerald-300">
                   Anytime, Anywhere
                 </span>
               </h1>
@@ -75,7 +75,7 @@ const FieldCollectionSection = () => {
               className="grid md:grid-cols-2 gap-6"
             >
               <div className="flex items-start space-x-4">
-                <div className="bg-emerald-600 p-3 rounded-full">
+                <div className="bg-emerald-600 dark:bg-emerald-500 p-3 rounded-full">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -88,7 +88,7 @@ const FieldCollectionSection = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-emerald-600 p-3 rounded-full">
+                <div className="bg-emerald-600 dark:bg-emerald-500 p-3 rounded-full">
                   <Wifi className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -101,7 +101,7 @@ const FieldCollectionSection = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-emerald-600 p-3 rounded-full">
+                <div className="bg-emerald-600 dark:bg-emerald-500 p-3 rounded-full">
                   <Languages className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -113,7 +113,7 @@ const FieldCollectionSection = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-emerald-600 p-3 rounded-full">
+                <div className="bg-emerald-600 dark:bg-emerald-500 p-3 rounded-full">
                   <Users className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -127,7 +127,7 @@ const FieldCollectionSection = () => {
 
             <motion.button
               variants={fadeInUp}
-              className="bg-gray-800 text-white px-8 py-4 rounded-full text-lg font-medium hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 px-8 py-4 rounded-full text-lg font-medium hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
               whileHover={{ y: -2 }}
             >
               Start Field Collection
@@ -147,8 +147,8 @@ const FieldCollectionSection = () => {
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
             >
-              <div className="w-96 h-80 bg-gray-900 rounded-2xl p-3 shadow-2xl">
-                <div className="w-full h-full bg-emerald-50 rounded-xl relative overflow-hidden">
+              <div className="w-96 h-80 bg-gray-900 dark:bg-gray-800 rounded-2xl p-3 shadow-2xl dark:shadow-gray-900/50 border border-gray-700 dark:border-gray-600 transition-colors duration-300">
+                <div className="w-full h-full bg-emerald-50 dark:bg-gray-900 rounded-xl relative overflow-hidden transition-colors duration-300">
                   <div className="absolute top-3 left-3 right-3">
                     <div className="flex items-center justify-between">
                       <div className="flex space-x-1">
@@ -156,20 +156,20 @@ const FieldCollectionSection = () => {
                         <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                       </div>
-                      <div className="text-xs font-medium bg-white px-2 py-1 rounded">
+                      <div className="text-xs font-medium bg-white dark:bg-gray-800 text-gray-800 dark:text-white px-2 py-1 rounded transition-colors duration-300">
                         GeoLanka Field
                       </div>
                     </div>
                   </div>
-                  <div className="absolute inset-3 top-12 bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-lg flex items-center justify-center">
+                  <div className="absolute inset-3 top-12 bg-gradient-to-br from-emerald-600 to-emerald-800 dark:from-emerald-500 dark:to-emerald-700 rounded-lg flex items-center justify-center">
                     <MapPin className="w-20 h-20 text-white" />
                   </div>
                   <div className="absolute bottom-3 left-3 right-3">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3">
-                      <div className="text-xs text-gray-700 font-medium">
+                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg p-3 border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+                      <div className="text-xs text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">
                         Status: Offline Ready
                       </div>
-                      <div className="text-xs text-emerald-700">
+                      <div className="text-xs text-emerald-700 dark:text-emerald-400 transition-colors duration-300">
                         ✓ Field data synced
                       </div>
                     </div>

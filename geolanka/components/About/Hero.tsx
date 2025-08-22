@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 
 export function HeroSection() {
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen flex items-center">
+    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-[#0A0A0A] min-h-screen flex items-center transition-colors duration-300">
       <div className="max-w-7xl mx-auto w-full text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full border border-emerald-200 mb-8"
+          className="inline-flex items-center bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full border border-emerald-200 dark:border-emerald-700 mb-8 transition-colors duration-300"
         >
           <span className="font-medium text-sm uppercase tracking-wide">
             GeoLanka Platform
@@ -25,10 +25,10 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-12"
         >
-          <h1 className="text-6xl lg:text-8xl font-serif font-bold text-gray-800 mb-8 leading-tight">
+          <h1 className="text-6xl lg:text-8xl font-serif font-bold text-gray-800 dark:text-white mb-8 leading-tight transition-colors duration-300">
             GeoLanka Geo-Mapping
           </h1>
-          <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
             An all-in-one solution for intelligent land management and
             environmental protection across Sri Lanka
           </p>
@@ -41,10 +41,10 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors">
+          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-300">
             Get Started
           </button>
-          <button className="border-2 border-gray-300 text-gray-700 hover:border-emerald-600 hover:text-emerald-600 px-8 py-4 rounded-full text-lg font-semibold transition-colors">
+          <button className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:border-emerald-600 dark:hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-300">
             Learn More
           </button>
         </motion.div>
@@ -59,7 +59,7 @@ export function HeroSection() {
           <img
             src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
             alt="GeoLanka Platform"
-            className="w-full h-96 object-cover rounded-3xl shadow-2xl"
+            className="w-full h-96 object-cover rounded-3xl shadow-2xl dark:shadow-gray-900/50 transition-all duration-300"
           />
         </motion.div>
       </div>
