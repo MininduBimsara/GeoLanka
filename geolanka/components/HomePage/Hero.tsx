@@ -58,7 +58,7 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative  min-h-screen overflow-hidden">
       {/* Gradient Background inspired by honey design */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-blue-50" />
 
@@ -97,46 +97,8 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
           }}
         />
       </div>
-
-      {/* Navigation */}
-      <nav className="relative z-50 px-6 lg:px-8 py-6">
-        <div className="flex items-center justify-between">
-          <motion.div className="flex items-center space-x-2" {...logoFloat}>
-            <div className="w-10 h-10 bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-full flex items-center justify-center shadow-lg">
-              <MapPin className="w-5 h-5 text-white" />
-            </div>
-            <span
-              className="text-2xl font-serif font-bold text-gray-800"
-              style={{ fontFamily: "Playfair Display, serif" }}
-            >
-              GeoLanka
-            </span>
-          </motion.div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#"
-              className="text-gray-600 hover:text-emerald-600 transition-colors font-medium"
-            >
-              Features
-            </a>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-emerald-600 transition-colors font-medium"
-            >
-              Solutions
-            </a>
-            <a
-              href="#"
-              className="text-gray-600 hover:text-emerald-600 transition-colors font-medium"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      {/* Main Hero Content */}
       <div className="relative z-20 container mx-auto px-6 lg:px-8 py-12 lg:py-20">
+        {/* Main Hero Content */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[80vh]">
           {/* Left Side - Content */}
           <motion.div

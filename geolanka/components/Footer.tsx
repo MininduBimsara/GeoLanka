@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -10,24 +12,45 @@ import {
   ChevronRight,
   MapPin,
 } from "lucide-react";
+import Link from "next/link";
+import { useTheme } from "@/components/ThemeProvider";
 
 const GeoLankaFooter = () => {
   const Logo = () => (
-    <motion.div
-      className="flex items-center space-x-3"
-      whileHover={{ scale: 1.05 }}
-    >
-      <div className="relative">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg">
-          <MapPin className="w-6 h-6 text-white" />
+    <Link href="/">
+      <motion.div
+        className="flex items-center space-x-3 cursor-pointer"
+        whileHover={{ scale: 1.05 }}
+      >
+        <div className="relative">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg">
+            <MapPin className="w-6 h-6 text-white" />
+          </div>
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full animate-pulse"></div>
         </div>
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full animate-pulse"></div>
-      </div>
-      <div className="font-serif font-bold text-xl text-gray-800 dark:text-white">
-        Geo<span className="text-emerald-600">Lanka</span>
-      </div>
-    </motion.div>
+        <div className="font-serif font-bold text-xl text-gray-800 dark:text-white">
+          Geo<span className="text-emerald-600">Lanka</span>
+        </div>
+      </motion.div>
+    </Link>
   );
+  const { isDarkMode } = useTheme(); // You can use this if you need to conditionally render anything based on theme
+
+  const platformLinks = [
+    { name: "Features", href: "/features" },
+    { name: "Use Cases", href: "/use-cases" },
+    { name: "API Documentation", href: "/docs" },
+    { name: "Mobile App", href: "/mobile" },
+    { name: "Dashboard", href: "/dashboard" },
+  ];
+
+  const companyLinks = [
+    { name: "About Us", href: "/about" },
+    { name: "Careers", href: "/careers" },
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms of Service", href: "/terms" },
+    { name: "Support", href: "/support" },
+  ];
 
   return (
     <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
@@ -42,13 +65,18 @@ const GeoLankaFooter = () => {
               AI-powered analysis.
             </p>
             <div className="flex space-x-4">
-              {[Twitter, Linkedin, Github].map((Icon, index) => (
+              {[
+                { Icon: Twitter, label: "Twitter" },
+                { Icon: Linkedin, label: "LinkedIn" },
+                { Icon: Github, label: "GitHub" },
+              ].map(({ Icon, label }, index) => (
                 <motion.a
                   key={index}
                   href="#"
                   className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-emerald-600 hover:text-white transition-all duration-200"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
+                  aria-label={`Follow us on ${label}`}
                 >
                   <Icon className="w-4 h-4" />
                 </motion.a>
@@ -62,21 +90,15 @@ const GeoLankaFooter = () => {
               Platform
             </h3>
             <ul className="space-y-3">
-              {[
-                "Features",
-                "Use Cases",
-                "API Documentation",
-                "Mobile App",
-                "Dashboard",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+              {platformLinks.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
                     className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm transition-colors duration-200 flex items-center group"
                   >
                     <ChevronRight className="w-3 h-3 mr-1 group-hover:translate-x-1 transition-transform duration-200" />
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -88,21 +110,15 @@ const GeoLankaFooter = () => {
               Company
             </h3>
             <ul className="space-y-3">
-              {[
-                "About Us",
-                "Careers",
-                "Privacy Policy",
-                "Terms of Service",
-                "Support",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+              {companyLinks.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
                     className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm transition-colors duration-200 flex items-center group"
                   >
                     <ChevronRight className="w-3 h-3 mr-1 group-hover:translate-x-1 transition-transform duration-200" />
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -165,24 +181,24 @@ const GeoLankaFooter = () => {
               for Sri Lankan excellence.
             </p>
             <div className="flex items-center space-x-6">
-              <a
-                href="#"
+              <Link
+                href="/privacy"
                 className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-xs transition-colors duration-200"
               >
                 Privacy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/terms"
                 className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-xs transition-colors duration-200"
               >
                 Terms
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/cookies"
                 className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-xs transition-colors duration-200"
               >
                 Cookies
-              </a>
+              </Link>
             </div>
           </div>
         </div>

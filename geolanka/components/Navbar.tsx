@@ -1,10 +1,13 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon, MapPin, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { useTheme } from "@/components/ThemeProvider";
 
 const GeoLankaNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   // Handle scroll effect
@@ -16,14 +19,8 @@ const GeoLankaNavbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Apply dark mode to document
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
+const { isDarkMode, toggleTheme } = useTheme();
+
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -34,20 +31,22 @@ const GeoLankaNavbar = () => {
   ];
 
   const Logo = () => (
-    <motion.div
-      className="flex items-center space-x-3"
-      whileHover={{ scale: 1.05 }}
-    >
-      <div className="relative">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg">
-          <MapPin className="w-6 h-6 text-white" />
+    <Link href="/">
+      <motion.div
+        className="flex items-center space-x-3 cursor-pointer"
+        whileHover={{ scale: 1.05 }}
+      >
+        <div className="relative">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg">
+            <MapPin className="w-6 h-6 text-white" />
+          </div>
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full animate-pulse"></div>
         </div>
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full animate-pulse"></div>
-      </div>
-      <div className="font-serif font-bold text-xl text-gray-800 dark:text-white">
-        Geo<span className="text-emerald-600">Lanka</span>
-      </div>
-    </motion.div>
+        <div className="font-serif font-bold text-xl text-gray-800 dark:text-white">
+          Geo<span className="text-emerald-600">Lanka</span>
+        </div>
+      </motion.div>
+    </Link>
   );
 
   return (
@@ -68,18 +67,23 @@ const GeoLankaNavbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link, index) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium text-base transition-colors duration-200 relative group"
-                whileHover={{ y: -2 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {link.name}
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></div>
-              </motion.a>
+              <motion.div key={link.name}>
+                <Link
+                  href={link.href}
+                  className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium text-base transition-colors duration-200 relative group"
+                >
+                  <motion.span
+                    whileHover={{ y: -2 }}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="block"
+                  >
+                    {link.name}
+                  </motion.span>
+                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></div>
+                </Link>
+              </motion.div>
             ))}
           </div>
 
@@ -87,10 +91,11 @@ const GeoLankaNavbar = () => {
           <div className="flex items-center space-x-4">
             {/* Dark Mode Toggle */}
             <motion.button
-              onClick={() => setIsDarkMode(!isDarkMode)}
+              onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Toggle dark mode"
             >
               <AnimatePresence mode="wait">
                 {isDarkMode ? (
@@ -132,6 +137,7 @@ const GeoLankaNavbar = () => {
               className="lg:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Toggle mobile menu"
             >
               <AnimatePresence mode="wait">
                 {isMenuOpen ? (
@@ -172,18 +178,22 @@ const GeoLankaNavbar = () => {
           >
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  className="block py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-medium transition-all duration-200 flex items-center justify-between group"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </motion.a>
+                <motion.div key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="block py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-medium transition-all duration-200 flex items-center justify-between group"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <motion.span
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      {link.name}
+                    </motion.span>
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  </Link>
+                </motion.div>
               ))}
               <motion.button
                 className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-full font-medium transition-all duration-200"
