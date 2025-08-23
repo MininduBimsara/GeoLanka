@@ -19,8 +19,7 @@ const GeoLankaNavbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-const { isDarkMode, toggleTheme } = useTheme();
-
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -49,15 +48,26 @@ const { isDarkMode, toggleTheme } = useTheme();
     </Link>
   );
 
+  // Get background based on scroll state and theme
+  const getBackgroundClass = () => {
+    if (isDarkMode) {
+      // In dark mode, always use the fixed dark color
+      return scrolled
+        ? "bg-[#0a0c0b]/95 backdrop-blur-md shadow-lg"
+        : "bg-transparent";
+    } else {
+      // In light mode, use the original behavior
+      return scrolled
+        ? "bg-white/95 backdrop-blur-md shadow-lg"
+        : "bg-transparent";
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${getBackgroundClass()}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
@@ -92,7 +102,7 @@ const { isDarkMode, toggleTheme } = useTheme();
             {/* Dark Mode Toggle */}
             <motion.button
               onClick={toggleTheme}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="p-2 rounded-full bg-gray-100 dark:bg-[#1a1c1b] hover:bg-gray-200 dark:hover:bg-[#2a2c2b] transition-colors duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle dark mode"
@@ -134,7 +144,7 @@ const { isDarkMode, toggleTheme } = useTheme();
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="lg:hidden p-2 rounded-lg bg-gray-100 dark:bg-[#1a1c1b] hover:bg-gray-200 dark:hover:bg-[#2a2c2b] transition-colors duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle mobile menu"
@@ -174,14 +184,14 @@ const { isDarkMode, toggleTheme } = useTheme();
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700"
+            className="lg:hidden bg-white/95 dark:bg-[#0a0c0b]/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700"
           >
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link, index) => (
                 <motion.div key={link.name}>
                   <Link
                     href={link.href}
-                    className="block py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-medium transition-all duration-200 flex items-center justify-between group"
+                    className="block py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-[#1a1c1b] rounded-lg font-medium transition-all duration-200 flex items-center justify-between group"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <motion.span

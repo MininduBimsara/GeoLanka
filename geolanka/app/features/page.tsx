@@ -1,3 +1,4 @@
+// page.tsx - Updated main container with dark mode support
 "use client";
 
 import React, { useState } from "react";
@@ -136,8 +137,8 @@ export default function Features() {
         features={features}
       />
 
-      {/* Content Section */}
-      <div className="relative bg-white">
+      {/* Content Section - Updated with dark mode support */}
+      <div className="relative bg-white dark:bg-[#0a0c0b] transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Assistant Panel */}

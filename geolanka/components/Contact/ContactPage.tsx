@@ -11,6 +11,9 @@ import {
   Linkedin,
   Instagram,
   Send,
+  Clock,
+  Users,
+  Globe,
 } from "lucide-react";
 
 const ContactPage = () => {
@@ -37,43 +40,101 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Main Contact Section - White Background */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16">
-              {/* Left Side - Get in touch */}
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <div className="relative">
+        <div
+          className="relative h-80 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              'url("https://images.unsplash.com/photo-1499159058454-75067059248a?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60" />
+
+          {/* Location Badge */}
+          <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 flex items-center gap-2">
+            <MapPin className="w-4 h-4 text-gray-600" />
+            <span className="text-sm font-medium text-gray-800">
+              Colombo, Sri Lanka
+            </span>
+          </div>
+
+          {/* Office Gallery Pills */}
+          <div className="absolute top-6 right-6 flex items-center gap-2">
+            <div className="flex -space-x-2">
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=60&h=60&fit=crop&q=80"
+                alt="Office"
+                className="w-10 h-10 rounded-lg border-2 border-white object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=60&h=60&fit=crop&q=80"
+                alt="Team"
+                className="w-10 h-10 rounded-lg border-2 border-white object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=60&h=60&fit=crop&q=80"
+                alt="Meeting"
+                className="w-10 h-10 rounded-lg border-2 border-white object-cover"
+              />
+            </div>
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1">
+              <span className="text-xs font-medium text-gray-700">Office</span>
+            </div>
+          </div>
+
+          {/* Title */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-white">
+              <h1 className="text-6xl lg:text-7xl font-light mb-4">
+                Contact Us
+              </h1>
+              <p className="text-lg opacity-90 max-w-2xl mx-auto px-6">
+                Get in touch with our expert team for enterprise mapping
+                solutions, technical support, and partnership opportunities
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Left Panel - Contact Info */}
+            <div className="lg:col-span-1">
               <motion.div
-                className="space-y-8"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-3xl p-6 h-auto relative overflow-hidden text-white"
               >
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Get in touch
-                  </h2>
-                  <p className="text-gray-600 text-base leading-relaxed mb-8">
-                    Sekolaq Oyunlar teknisk işqlanımlami qazma ştrukturda
-                    <br />
-                    məlumat hazırlıqları növü effekt edim.
-                  </p>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <span className="font-medium">Get in Touch</span>
                 </div>
 
-                {/* Contact Cards */}
-                <div className="space-y-6">
-                  {/* Head Office */}
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-emerald-400" />
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-4">
+                    Ready to start your
+                    <span className="text-emerald-200"> mapping journey</span>?
+                    Let's discuss your
+                    <span className="text-emerald-200"> requirements</span>.
+                  </h3>
+                </div>
+
+                {/* Contact Details */}
+                <div className="space-y-6 mb-8">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-gray-900 mb-1">
-                        Head Office
-                      </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
+                      <h4 className="font-semibold mb-1">Head Office</h4>
+                      <p className="text-sm text-emerald-100 leading-relaxed">
                         Lotus Tower Complex, Floor 23
                         <br />
                         Colombo 01, Sri Lanka
@@ -83,16 +144,13 @@ const ContactPage = () => {
                     </div>
                   </div>
 
-                  {/* Email */}
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-6 h-6 text-emerald-400" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-gray-900 mb-1">
-                        Email Us
-                      </h3>
-                      <p className="text-gray-600 text-sm">
+                      <h4 className="font-semibold mb-1">Email</h4>
+                      <p className="text-sm text-emerald-100">
                         info@geolanka.com
                         <br />
                         support@geolanka.com
@@ -100,192 +158,257 @@ const ContactPage = () => {
                     </div>
                   </div>
 
-                  {/* Phone */}
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-emerald-400" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-gray-900 mb-1">
-                        Call Us
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        Phone: +94 11 7200 2020
+                      <h4 className="font-semibold mb-1">Phone</h4>
+                      <p className="text-sm text-emerald-100">
+                        +94 11 7200 2020
                         <br />
-                        Fax: +94 11 7200 2021
+                        +94 11 7200 2021
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Social Media */}
-                <div className="pt-6">
-                  <h3 className="font-bold text-lg text-gray-900 mb-4">
-                    Follow our social media
-                  </h3>
-                  <div className="flex space-x-3">
-                    <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center cursor-pointer hover:bg-blue-700 transition-colors">
-                      <Facebook className="w-5 h-5" />
-                    </div>
-                    <div className="w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center cursor-pointer hover:bg-sky-600 transition-colors">
-                      <Twitter className="w-5 h-5" />
-                    </div>
-                    <div className="w-10 h-10 bg-blue-700 text-white rounded-full flex items-center justify-center cursor-pointer hover:bg-blue-800 transition-colors">
-                      <Linkedin className="w-5 h-5" />
-                    </div>
-                    <div className="w-10 h-10 bg-pink-600 text-white rounded-full flex items-center justify-center cursor-pointer hover:bg-pink-700 transition-colors">
-                      <Instagram className="w-5 h-5" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Right Side - Send us a message */}
-              <motion.div
-                className="bg-white"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <div className="mb-8">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                    Send us a message
-                  </h2>
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="bg-white/20 rounded-full px-3 py-1 text-xs font-medium">
+                    Enterprise support
+                  </span>
+                  <span className="bg-white/20 rounded-full px-3 py-1 text-xs font-medium">
+                    24/7 assistance
+                  </span>
+                  <span className="bg-white/20 rounded-full px-3 py-1 text-xs font-medium">
+                    Custom solutions
+                  </span>
                 </div>
 
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
-                        placeholder="Name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Company
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
-                        placeholder="Company"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
-                        placeholder="Phone"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
-                        placeholder="Email"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
-                      placeholder="Subject"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 resize-none"
-                      placeholder="Message..."
-                    />
-                  </div>
-
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
-                  >
-                    <span>SEND</span>
+                {/* Social Links */}
+                <div className="flex gap-3">
+                  <button className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                    <Facebook className="w-4 h-4" />
+                  </button>
+                  <button className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                    <Twitter className="w-4 h-4" />
+                  </button>
+                  <button className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                    <Linkedin className="w-4 h-4" />
+                  </button>
+                  <button className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                    <Instagram className="w-4 h-4" />
                   </button>
                 </div>
               </motion.div>
             </div>
+
+            {/* Right Content Area */}
+            <div className="lg:col-span-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="space-y-6"
+              >
+                {/* Statistics Cards */}
+                <div className="grid grid-cols-3 gap-6 mb-6">
+                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                      <Clock className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="text-3xl font-bold text-gray-800 mb-1">
+                      24/7
+                    </div>
+                    <div className="text-sm text-gray-600">Support</div>
+                  </div>
+
+                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="text-3xl font-bold text-gray-800 mb-1">
+                      500+
+                    </div>
+                    <div className="text-sm text-gray-600">Clients</div>
+                  </div>
+
+                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                      <Globe className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="text-3xl font-bold text-gray-800 mb-1">
+                      15+
+                    </div>
+                    <div className="text-sm text-gray-600">Countries</div>
+                  </div>
+                </div>
+
+                {/* Contact Form Card */}
+                <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                  <div className="mb-8">
+                    <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                      Send us a message
+                    </h2>
+                    <p className="text-gray-600">
+                      Tell us about your project and we'll get back to you
+                      within 24 hours
+                    </p>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Full Name *
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                          placeholder="Enter your full name"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Company
+                        </label>
+                        <input
+                          type="text"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                          placeholder="Your company name"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                          placeholder="+94 XX XXX XXXX"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Email Address *
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                          placeholder="your@email.com"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Subject *
+                      </label>
+                      <input
+                        type="text"
+                        name="subject"
+                        required
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                        placeholder="What can we help you with?"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Message *
+                      </label>
+                      <textarea
+                        name="message"
+                        required
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        rows={6}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 resize-none transition-all"
+                        placeholder="Tell us about your project, requirements, or any questions you have..."
+                      />
+                    </div>
+
+                    <motion.button
+                      whileHover={{ y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      type="submit"
+                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                    >
+                      <Send className="w-5 h-5" />
+                      <span>Send Message</span>
+                    </motion.button>
+                  </div>
+                </div>
+
+                {/* Map Section */}
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 h-64 relative">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{
+                      backgroundImage:
+                        'url("https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=400&fit=crop&q=80")',
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-emerald-900/20" />
+
+                  {/* Office Pin */}
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <motion.div
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center border-2 border-white shadow-lg"
+                    >
+                      <MapPin className="w-4 h-4 text-white" />
+                    </motion.div>
+                  </div>
+
+                  {/* Office Info */}
+                  <div className="absolute bottom-4 left-4">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3">
+                      <h4 className="font-bold text-gray-800 text-sm mb-1">
+                        GeoLanka Head Office
+                      </h4>
+                      <p className="text-xs text-gray-600">
+                        Lotus Tower Complex
+                        <br />
+                        Colombo 01, Sri Lanka
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* View Directions Button */}
+                  <div className="absolute bottom-4 right-4">
+                    <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      Directions
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="bg-white">
-        <div className="w-full">
-          <div
-            className="w-full h-96 bg-cover bg-center relative"
-            style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1400&h=600&fit=crop')",
-            }}
-          >
-            {/* Map marker */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
-                <MapPin className="w-4 h-4 text-white" />
-              </div>
-            </div>
-
-            {/* Optional: Office location info overlay */}
-            <div className="absolute bottom-6 left-6 bg-white rounded-lg p-4 shadow-lg max-w-xs">
-              <h4 className="font-bold text-gray-900 mb-1">
-                GeoLanka Head Office
-              </h4>
-              <p className="text-sm text-gray-600">
-                Lotus Tower Complex, Floor 23
-                <br />
-                Colombo 01, Sri Lanka
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </main>
   );
 };
 
