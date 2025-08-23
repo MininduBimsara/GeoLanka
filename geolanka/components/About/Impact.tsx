@@ -37,7 +37,7 @@ const impactStats = [
 
 export function ImpactSection() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0A0A0A] transition-colors duration-300">
       <div className="max-w-6xl mx-auto text-center">
         {/* Header */}
         <motion.div
@@ -47,10 +47,10 @@ export function ImpactSection() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl lg:text-6xl font-serif font-bold text-gray-800 mb-6">
+          <h2 className="text-4xl lg:text-6xl font-serif font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Our Impact
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
             Driving Sri Lanka's digital transformation through advanced mapping
             technology
           </p>
@@ -67,7 +67,7 @@ export function ImpactSection() {
           {impactAreas.map((impact, index) => (
             <div
               key={impact.title}
-              className="bg-gray-50 rounded-2xl overflow-hidden hover:bg-gray-100 transition-colors"
+              className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
             >
               <img
                 src={impact.image}
@@ -75,10 +75,12 @@ export function ImpactSection() {
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="font-semibold text-lg text-gray-800 mb-2">
+                <h3 className="font-semibold text-lg text-gray-800 dark:text-white mb-2 transition-colors duration-300">
                   {impact.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{impact.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm transition-colors duration-300">
+                  {impact.description}
+                </p>
               </div>
             </div>
           ))}
@@ -94,10 +96,12 @@ export function ImpactSection() {
         >
           {impactStats.map((stat, index) => (
             <div key={stat.label} className="text-center">
-              <div className="text-5xl font-bold text-emerald-600 mb-2">
+              <div className="text-5xl font-bold text-emerald-600 dark:text-emerald-400 mb-2 transition-colors duration-300">
                 {stat.number}
               </div>
-              <div className="text-lg text-gray-600">{stat.label}</div>
+              <div className="text-lg text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                {stat.label}
+              </div>
             </div>
           ))}
         </motion.div>
@@ -109,7 +113,7 @@ export function ImpactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors">
+          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-300">
             Start Your Journey to Smart Mapping
           </button>
         </motion.div>

@@ -24,7 +24,10 @@ export function AboutSection({
 
   return (
     <section
-      className={cn("relative min-h-screen py-20 overflow-hidden", className)}
+      className={cn(
+        "relative min-h-screen py-20 overflow-hidden transition-colors duration-300",
+        className
+      )}
     >
       {/* Background Image */}
       <div
@@ -34,12 +37,15 @@ export function AboutSection({
 
       {/* Gradient Overlay */}
       <div
-        className={cn("absolute inset-0 opacity-90", overlayVariants[variant])}
+        className={cn(
+          "absolute inset-0 opacity-90 dark:opacity-95",
+          overlayVariants[variant]
+        )}
       />
 
       {/* Geometric Overlay */}
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-20 dark:opacity-15"
         style={{
           clipPath: "polygon(0 0, 100% 0, 85% 100%, 0% 85%)",
           background: "rgba(255, 255, 255, 0.1)",

@@ -29,12 +29,14 @@ const GeoLankaFooter = () => {
           <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full animate-pulse"></div>
         </div>
         <div className="font-serif font-bold text-xl text-gray-800 dark:text-white">
-          Geo<span className="text-emerald-600">Lanka</span>
+          Geo
+          <span className="text-emerald-600 dark:text-emerald-400">Lanka</span>
         </div>
       </motion.div>
     </Link>
   );
-  const { isDarkMode } = useTheme(); // You can use this if you need to conditionally render anything based on theme
+
+  const { isDarkMode } = useTheme();
 
   const platformLinks = [
     { name: "Features", href: "/features" },
@@ -53,7 +55,7 @@ const GeoLankaFooter = () => {
   ];
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <footer className="bg-gray-50 dark:bg-[#0a0c0b] border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
@@ -73,7 +75,7 @@ const GeoLankaFooter = () => {
                 <motion.a
                   key={index}
                   href="#"
-                  className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-emerald-600 hover:text-white transition-all duration-200"
+                  className="w-10 h-10 bg-gray-200 dark:bg-[#1a1c1b] rounded-full flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-500 transition-all duration-200"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                   aria-label={`Follow us on ${label}`}
@@ -131,7 +133,7 @@ const GeoLankaFooter = () => {
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
-                <Mail className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <a
                     href="mailto:info@geolanka.lk"
@@ -142,7 +144,7 @@ const GeoLankaFooter = () => {
                 </div>
               </li>
               <li className="flex items-start space-x-3">
-                <Phone className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                <Phone className="w-4 h-4 text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <a
                     href="tel:+94112345678"
@@ -153,7 +155,7 @@ const GeoLankaFooter = () => {
                 </div>
               </li>
               <li className="flex items-start space-x-3">
-                <Globe className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                <Globe className="w-4 h-4 text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="text-gray-600 dark:text-gray-400 text-sm">
                     Colombo, Sri Lanka
@@ -164,7 +166,7 @@ const GeoLankaFooter = () => {
 
             {/* CTA in Footer */}
             <motion.button
-              className="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-full font-medium text-sm transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white py-3 px-4 rounded-full font-medium text-sm transition-all duration-200 shadow-lg hover:shadow-xl"
               whileHover={{ y: -2, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

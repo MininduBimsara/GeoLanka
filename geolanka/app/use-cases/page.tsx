@@ -130,12 +130,12 @@ const UseCasesPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <main className="min-h-screen bg-gray-50 dark:bg-[#0a0c0b] transition-colors duration-300">
         {/* Hero Section */}
         <section className="relative py-20 px-4 sm:px-6 lg:px-8">
           {/* Background with map overlay */}
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-10"
+            className="absolute inset-0 bg-cover bg-center opacity-10 dark:opacity-5"
             style={{
               backgroundImage:
                 "url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')",
@@ -145,13 +145,13 @@ const UseCasesPage = () => {
           {/* Geometric background shapes */}
           <div className="absolute inset-0">
             <div
-              className="absolute inset-0 bg-gradient-to-br from-emerald-800/5 to-emerald-900/10"
+              className="absolute inset-0 bg-gradient-to-br from-emerald-800/5 to-emerald-900/10 dark:from-emerald-600/10 dark:to-emerald-700/15"
               style={{
                 clipPath: "polygon(0 0, 70% 0, 50% 100%, 0 100%)",
               }}
             />
             <div
-              className="absolute inset-0 bg-gradient-to-bl from-stone-200/20 to-stone-300/10"
+              className="absolute inset-0 bg-gradient-to-bl from-stone-200/20 to-stone-300/10 dark:from-gray-700/20 dark:to-gray-600/10"
               style={{
                 clipPath: "polygon(30% 0, 100% 0, 100% 100%, 20% 100%)",
               }}
@@ -167,7 +167,7 @@ const UseCasesPage = () => {
               <h1 className="text-5xl lg:text-7xl font-serif font-bold text-gray-800 dark:text-white mb-6">
                 Real-World Applications
               </h1>
-              <p className="text-xl lg:text-2xl font-light text-gray-700 dark:text-stone-100 max-w-4xl mx-auto">
+              <p className="text-xl lg:text-2xl font-light text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
                 From flood preparedness to urban planning, our platform helps
                 Sri Lanka make smarter, data-driven land management decisions.
               </p>
@@ -184,7 +184,7 @@ const UseCasesPage = () => {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-stone-200/50"
+                  className="bg-white/80 dark:bg-[#1a1c1b]/80 backdrop-blur-sm rounded-2xl p-6 border border-stone-200/50 dark:border-gray-700/50"
                 >
                   <div className="text-3xl lg:text-4xl font-serif font-bold text-emerald-700 dark:text-emerald-400">
                     {metric.number}
@@ -192,7 +192,7 @@ const UseCasesPage = () => {
                   <div className="text-sm font-medium text-gray-800 dark:text-white mt-1">
                     {metric.label}
                   </div>
-                  <div className="text-xs text-gray-600 dark:text-gray-300 mt-1">
+                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
                     {metric.description}
                   </div>
                 </motion.div>
@@ -235,18 +235,18 @@ const UseCasesPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="mt-12 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
+                  className="mt-12 bg-white dark:bg-[#1a1c1b] rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700"
                 >
                   <h3 className="text-xl font-serif font-bold text-gray-800 dark:text-white mb-4">
                     Flood Risk Assessment
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
                     GeoLanka consolidates the entire process of flood risk
                     mapping into one easy-to-use platform, offering 16+ data
                     layers and real-time monitoring capabilities.
                   </p>
                   <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8 bg-emerald-600 dark:bg-emerald-500 rounded-full flex items-center justify-center">
                       <Shield className="w-4 h-4 text-white" />
                     </div>
                     <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
@@ -390,7 +390,7 @@ const UseCasesPage = () => {
         </section>
 
         {/* Testimonial Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#1a1c1b] transition-colors duration-300">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -409,7 +409,7 @@ const UseCasesPage = () => {
               </blockquote>
 
               <div className="flex items-center justify-center space-x-4">
-                <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-emerald-600 dark:bg-emerald-500 rounded-full flex items-center justify-center">
                   <Users className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-left">
@@ -429,10 +429,10 @@ const UseCasesPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-800 dark:bg-gray-900">
+        <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-800 dark:bg-[#0a0c0b]">
           {/* Background map */}
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-30"
+            className="absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-20"
             style={{
               backgroundImage:
                 "url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')",
@@ -441,7 +441,7 @@ const UseCasesPage = () => {
 
           {/* Geometric overlay */}
           <div
-            className="absolute inset-0 bg-gradient-to-r from-emerald-800/85 to-emerald-900/85"
+            className="absolute inset-0 bg-gradient-to-r from-emerald-800/85 to-emerald-900/85 dark:from-emerald-600/85 dark:to-emerald-700/85"
             style={{
               clipPath: "polygon(0 0, 60% 0, 40% 100%, 0 100%)",
             }}
@@ -460,7 +460,7 @@ const UseCasesPage = () => {
                 Ready to Transform Your Project?
               </h2>
 
-              <p className="text-xl text-stone-100 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-stone-100 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
                 See how our platform can support your project with precise
                 geo-mapping solutions tailored for Sri Lanka's unique landscape.
               </p>

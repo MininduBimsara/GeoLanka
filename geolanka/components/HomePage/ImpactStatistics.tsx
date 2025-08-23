@@ -34,7 +34,7 @@ const StatCard: React.FC<StatCardProps> = ({
 
   return (
     <motion.div
-      className={`relative group rounded-2xl overflow-hidden shadow-xl ${
+      className={`relative group rounded-2xl overflow-hidden shadow-xl dark:shadow-gray-900/30 transition-all duration-300 ${
         isLarge ? "md:col-span-2 lg:col-span-2 h-96" : "h-80"
       }`}
       initial={{ opacity: 0, scale: 0.95 }}
@@ -50,11 +50,11 @@ const StatCard: React.FC<StatCardProps> = ({
       />
 
       {/* Geometric Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/70 dark:from-black/80 via-black/60 dark:via-black/70 to-black/80 dark:to-black/85 transition-colors duration-300" />
 
       {/* Additional geometric shapes */}
       <div
-        className="absolute inset-0 bg-gradient-to-tr from-white/15 to-transparent"
+        className="absolute inset-0 bg-gradient-to-tr from-white/15 dark:from-white/10 to-transparent transition-colors duration-300"
         style={{
           clipPath: isLarge
             ? "polygon(0 0, 40% 0, 60% 100%, 0 100%)"
@@ -63,7 +63,7 @@ const StatCard: React.FC<StatCardProps> = ({
       />
 
       <div
-        className="absolute inset-0 bg-gradient-to-bl from-transparent to-white/10"
+        className="absolute inset-0 bg-gradient-to-bl from-transparent to-white/10 dark:to-white/5 transition-colors duration-300"
         style={{
           clipPath: isLarge
             ? "polygon(60% 0, 100% 0, 100% 80%, 80% 100%)"
@@ -90,12 +90,12 @@ const StatCard: React.FC<StatCardProps> = ({
           <div
             className={`${
               isLarge ? "w-16 h-16" : "w-12 h-12"
-            } bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center`}
+            } bg-white/20 dark:bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center transition-colors duration-300`}
           >
             {icon}
           </div>
           {!isLarge && (
-            <div className="w-8 h-8 border-2 border-stone-300/50 rounded-full" />
+            <div className="w-8 h-8 border-2 border-stone-300/50 dark:border-stone-400/50 rounded-full transition-colors duration-300" />
           )}
         </div>
 
@@ -112,15 +112,15 @@ const StatCard: React.FC<StatCardProps> = ({
             <h3
               className={`${
                 isLarge ? "text-2xl" : "text-xl"
-              } font-serif font-bold text-stone-100`}
+              } font-serif font-bold text-stone-100 dark:text-stone-200 transition-colors duration-300`}
             >
               {label}
             </h3>
           </div>
           <p
-            className={`text-stone-200 ${
+            className={`text-stone-200 dark:text-stone-300 ${
               isLarge ? "text-base max-w-md" : "text-sm"
-            } leading-relaxed`}
+            } leading-relaxed transition-colors duration-300`}
           >
             {description}
           </p>
@@ -195,10 +195,10 @@ const ImpactStatistics: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+    <section className="py-20 bg-white dark:bg-[#0A0A0A] relative overflow-hidden transition-colors duration-300">
       {/* Background Geometric Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-stone-100 opacity-50 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-emerald-100 opacity-40 blur-2xl rounded-full" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-stone-100 dark:bg-gray-700 opacity-50 dark:opacity-30 blur-3xl rounded-full transition-all duration-300" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-emerald-100 dark:bg-emerald-900/30 opacity-40 dark:opacity-20 blur-2xl rounded-full transition-all duration-300" />
 
       <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
@@ -209,26 +209,26 @@ const ImpactStatistics: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center space-x-2 bg-stone-100 px-4 py-2 rounded-full mb-6">
-            <Globe className="w-4 h-4 text-gray-700" />
-            <span className="text-gray-700 font-medium text-sm tracking-wide uppercase">
+          <div className="inline-flex items-center space-x-2 bg-stone-100 dark:bg-gray-800 px-4 py-2 rounded-full mb-6 border border-stone-200 dark:border-gray-700 transition-colors duration-300">
+            <Globe className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+            <span className="text-gray-700 dark:text-gray-300 font-medium text-sm tracking-wide uppercase transition-colors duration-300">
               Impact Metrics
             </span>
           </div>
 
-          <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-800 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Transforming Sri Lanka's Digital Map
           </h2>
 
           <div className="flex items-center justify-center space-x-4 mb-8">
-            <div className="h-px w-16 bg-gray-400"></div>
-            <p className="text-lg text-gray-600 font-light tracking-wide uppercase">
+            <div className="h-px w-16 bg-gray-400 dark:bg-gray-600 transition-colors duration-300"></div>
+            <p className="text-lg text-gray-600 dark:text-gray-400 font-light tracking-wide uppercase transition-colors duration-300">
               S T A T I S T I C S
             </p>
-            <div className="h-px w-16 bg-gray-400"></div>
+            <div className="h-px w-16 bg-gray-400 dark:bg-gray-600 transition-colors duration-300"></div>
           </div>
 
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
             Real numbers that demonstrate our commitment to revolutionizing
             geospatial technology and mapping services across Sri Lanka.
           </p>
