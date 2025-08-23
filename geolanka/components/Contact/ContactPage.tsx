@@ -53,9 +53,9 @@ const ContactPage = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60" />
 
           {/* Location Badge */}
-          <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-gray-600" />
-            <span className="text-sm font-medium text-gray-800">
+          <div className="absolute top-6 left-6 bg-white/90 dark:bg-[#1a1c1b]/90 backdrop-blur-sm rounded-2xl px-4 py-2 flex items-center gap-2">
+            <MapPin className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+            <span className="text-sm font-medium text-gray-800 dark:text-white">
               Colombo, Sri Lanka
             </span>
           </div>
@@ -79,8 +79,10 @@ const ContactPage = () => {
                 className="w-10 h-10 rounded-lg border-2 border-white object-cover"
               />
             </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1">
-              <span className="text-xs font-medium text-gray-700">Office</span>
+            <div className="bg-white/90 dark:bg-[#1a1c1b]/90 backdrop-blur-sm rounded-lg px-2 py-1">
+              <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                Office
+              </span>
             </div>
           </div>
 
@@ -100,7 +102,7 @@ const ContactPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative bg-white">
+      <div className="relative bg-white dark:bg-[#0a0c0b] transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left Panel - Contact Info */}
@@ -108,11 +110,11 @@ const ContactPage = () => {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-3xl p-6 h-auto relative overflow-hidden text-white"
+                className="bg-gradient-to-br from-emerald-600 to-emerald-700 dark:from-emerald-500 dark:to-emerald-600 rounded-3xl p-6 h-auto relative overflow-hidden text-white"
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-emerald-600" />
+                  <div className="w-10 h-10 bg-white dark:bg-[#1a1c1b] rounded-full flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                   </div>
                   <span className="font-medium">Get in Touch</span>
                 </div>
@@ -120,21 +122,28 @@ const ContactPage = () => {
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold mb-4">
                     Ready to start your
-                    <span className="text-emerald-200"> mapping journey</span>?
-                    Let's discuss your
-                    <span className="text-emerald-200"> requirements</span>.
+                    <span className="text-emerald-200 dark:text-emerald-300">
+                      {" "}
+                      mapping journey
+                    </span>
+                    ? Let's discuss your
+                    <span className="text-emerald-200 dark:text-emerald-300">
+                      {" "}
+                      requirements
+                    </span>
+                    .
                   </h3>
                 </div>
 
                 {/* Contact Details */}
                 <div className="space-y-6 mb-8">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <MapPin className="w-4 h-4" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Head Office</h4>
-                      <p className="text-sm text-emerald-100 leading-relaxed">
+                      <p className="text-sm text-emerald-100 dark:text-emerald-200 leading-relaxed">
                         Lotus Tower Complex, Floor 23
                         <br />
                         Colombo 01, Sri Lanka
@@ -145,12 +154,12 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Mail className="w-4 h-4" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Email</h4>
-                      <p className="text-sm text-emerald-100">
+                      <p className="text-sm text-emerald-100 dark:text-emerald-200">
                         info@geolanka.com
                         <br />
                         support@geolanka.com
@@ -159,12 +168,12 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Phone className="w-4 h-4" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Phone</h4>
-                      <p className="text-sm text-emerald-100">
+                      <p className="text-sm text-emerald-100 dark:text-emerald-200">
                         +94 11 7200 2020
                         <br />
                         +94 11 7200 2021
@@ -175,29 +184,29 @@ const ContactPage = () => {
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <span className="bg-white/20 rounded-full px-3 py-1 text-xs font-medium">
+                  <span className="bg-white/20 dark:bg-black/20 rounded-full px-3 py-1 text-xs font-medium">
                     Enterprise support
                   </span>
-                  <span className="bg-white/20 rounded-full px-3 py-1 text-xs font-medium">
+                  <span className="bg-white/20 dark:bg-black/20 rounded-full px-3 py-1 text-xs font-medium">
                     24/7 assistance
                   </span>
-                  <span className="bg-white/20 rounded-full px-3 py-1 text-xs font-medium">
+                  <span className="bg-white/20 dark:bg-black/20 rounded-full px-3 py-1 text-xs font-medium">
                     Custom solutions
                   </span>
                 </div>
 
                 {/* Social Links */}
                 <div className="flex gap-3">
-                  <button className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <button className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
                     <Facebook className="w-4 h-4" />
                   </button>
-                  <button className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <button className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
                     <Twitter className="w-4 h-4" />
                   </button>
-                  <button className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <button className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
                     <Linkedin className="w-4 h-4" />
                   </button>
-                  <button className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <button className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
                     <Instagram className="w-4 h-4" />
                   </button>
                 </div>
@@ -213,44 +222,50 @@ const ContactPage = () => {
               >
                 {/* Statistics Cards */}
                 <div className="grid grid-cols-3 gap-6 mb-6">
-                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+                  <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 text-center transition-colors duration-300">
                     <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
                       <Clock className="w-6 h-6 text-white" />
                     </div>
-                    <div className="text-3xl font-bold text-gray-800 mb-1">
+                    <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">
                       24/7
                     </div>
-                    <div className="text-sm text-gray-600">Support</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      Support
+                    </div>
                   </div>
 
-                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+                  <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 text-center transition-colors duration-300">
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
                       <Users className="w-6 h-6 text-white" />
                     </div>
-                    <div className="text-3xl font-bold text-gray-800 mb-1">
+                    <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">
                       500+
                     </div>
-                    <div className="text-sm text-gray-600">Clients</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      Clients
+                    </div>
                   </div>
 
-                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+                  <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 text-center transition-colors duration-300">
                     <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
                       <Globe className="w-6 h-6 text-white" />
                     </div>
-                    <div className="text-3xl font-bold text-gray-800 mb-1">
+                    <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">
                       15+
                     </div>
-                    <div className="text-sm text-gray-600">Countries</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      Countries
+                    </div>
                   </div>
                 </div>
 
                 {/* Contact Form Card */}
-                <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-300">
                   <div className="mb-8">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                    <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
                       Send us a message
                     </h2>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-400">
                       Tell us about your project and we'll get back to you
                       within 24 hours
                     </p>
@@ -259,7 +274,7 @@ const ContactPage = () => {
                   <div className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                           Full Name *
                         </label>
                         <input
@@ -268,12 +283,12 @@ const ContactPage = () => {
                           required
                           value={formData.name}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="Enter your full name"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                           Company
                         </label>
                         <input
@@ -281,7 +296,7 @@ const ContactPage = () => {
                           name="company"
                           value={formData.company}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="Your company name"
                         />
                       </div>
@@ -289,7 +304,7 @@ const ContactPage = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                           Phone Number
                         </label>
                         <input
@@ -297,12 +312,12 @@ const ContactPage = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="+94 XX XXX XXXX"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                           Email Address *
                         </label>
                         <input
@@ -311,14 +326,14 @@ const ContactPage = () => {
                           required
                           value={formData.email}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="your@email.com"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Subject *
                       </label>
                       <input
@@ -327,13 +342,13 @@ const ContactPage = () => {
                         required
                         value={formData.subject}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 transition-all"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                         placeholder="What can we help you with?"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Message *
                       </label>
                       <textarea
@@ -342,7 +357,7 @@ const ContactPage = () => {
                         value={formData.message}
                         onChange={handleInputChange}
                         rows={6}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white text-gray-900 resize-none transition-all"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white resize-none transition-all"
                         placeholder="Tell us about your project, requirements, or any questions you have..."
                       />
                     </div>
@@ -351,7 +366,7 @@ const ContactPage = () => {
                       whileHover={{ y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                      className="w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                     >
                       <Send className="w-5 h-5" />
                       <span>Send Message</span>
@@ -360,7 +375,7 @@ const ContactPage = () => {
                 </div>
 
                 {/* Map Section */}
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 h-64 relative">
+                <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 h-64 relative transition-colors duration-300">
                   <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
@@ -368,7 +383,7 @@ const ContactPage = () => {
                         'url("https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=400&fit=crop&q=80")',
                     }}
                   />
-                  <div className="absolute inset-0 bg-emerald-900/20" />
+                  <div className="absolute inset-0 bg-emerald-900/20 dark:bg-emerald-900/40" />
 
                   {/* Office Pin */}
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -383,11 +398,11 @@ const ContactPage = () => {
 
                   {/* Office Info */}
                   <div className="absolute bottom-4 left-4">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3">
-                      <h4 className="font-bold text-gray-800 text-sm mb-1">
+                    <div className="bg-white/95 dark:bg-[#0a0c0b]/95 backdrop-blur-sm rounded-xl px-4 py-3">
+                      <h4 className="font-bold text-gray-800 dark:text-white text-sm mb-1">
                         GeoLanka Head Office
                       </h4>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
                         Lotus Tower Complex
                         <br />
                         Colombo 01, Sri Lanka
@@ -397,7 +412,7 @@ const ContactPage = () => {
 
                   {/* View Directions Button */}
                   <div className="absolute bottom-4 right-4">
-                    <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                    <button className="bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
                       <MapPin className="w-4 h-4" />
                       Directions
                     </button>
