@@ -13,9 +13,12 @@ import {
   MapPin,
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTheme } from "@/components/ThemeProvider";
 
 const GeoLankaFooter = () => {
+  const router = useRouter();
+
   const Logo = () => (
     <Link href="/">
       <motion.div
@@ -37,6 +40,11 @@ const GeoLankaFooter = () => {
   );
 
   const { isDarkMode } = useTheme();
+
+  // Handler for navigating to contact page
+  const handleBookDiscoveryCall = () => {
+    router.push("/contact");
+  };
 
   const platformLinks = [
     { name: "Features", href: "/features" },
@@ -164,16 +172,15 @@ const GeoLankaFooter = () => {
               </li>
             </ul>
 
-            {/* CTA in Footer - Updated with Link */}
-            <Link href="/contact">
-              <motion.button
-                className="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white py-3 px-4 rounded-full font-medium text-sm transition-all duration-200 shadow-lg hover:shadow-xl"
-                whileHover={{ y: -2, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Book Discovery Call
-              </motion.button>
-            </Link>
+            {/* CTA in Footer - Fixed with onClick */}
+            <motion.button
+              onClick={handleBookDiscoveryCall}
+              className="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white py-3 px-4 rounded-full font-medium text-sm transition-all duration-200 shadow-lg hover:shadow-xl"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Book Discovery Call
+            </motion.button>
           </div>
         </div>
 

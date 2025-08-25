@@ -2,21 +2,22 @@
 
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, Play } from "lucide-react";
 import { useInView } from "@/hooks/usePerformanceOptimizations";
 
-interface CTALinkProps {
+interface CTAButtonProps {
   variant: "primary" | "secondary";
   children: React.ReactNode;
   icon?: React.ReactNode;
-  href: string;
+  onClick: () => void;
   className?: string;
 }
 
-const CTALink: React.FC<CTALinkProps> = React.memo(
-  ({ variant, children, icon, href, className = "" }) => {
+const CTAButton: React.FC<CTAButtonProps> = React.memo(
+  ({ variant, children, icon, onClick, className = "" }) => {
     const baseClasses =
-      "group relative px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl btn-hover transition-all duration-300 ease-out inline-flex items-center";
+      "group relative px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl btn-hover transition-all duration-300 ease-out inline-flex items-center cursor-pointer";
 
     const variantClasses =
       variant === "primary"
@@ -24,25 +25,35 @@ const CTALink: React.FC<CTALinkProps> = React.memo(
         : "bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-emerald-700 dark:text-emerald-400 border-2 border-emerald-600 dark:border-emerald-500";
 
     return (
-      <Link
-        href={href}
+      <button
+        onClick={onClick}
         className={`${baseClasses} ${variantClasses} ${className} transition-colors duration-300`}
       >
         <span className="flex items-center space-x-3">
           <span>{children}</span>
           {icon}
         </span>
-      </Link>
+      </button>
     );
   }
 );
 
-CTALink.displayName = "CTALink";
+CTAButton.displayName = "CTAButton";
 
 const CallToActionSection: React.FC = () => {
+  const router = useRouter();
   const [headerRef, isHeaderInView] = useInView({ once: true });
   const [buttonsRef, isButtonsInView] = useInView({ once: true });
   const [statsRef, isStatsInView] = useInView({ once: true });
+
+  // Navigation handlers
+  const handleBookDiscoveryCall = () => {
+    router.push("/contact");
+  };
+
+  const handleStartSamples = () => {
+    router.push("/features");
+  };
 
   // Memoize stats to prevent re-renders
   const stats = React.useMemo(
@@ -95,30 +106,30 @@ const CallToActionSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Action Buttons with Links */}
+        {/* Action Buttons with onClick handlers */}
         <div
           ref={buttonsRef}
           className={`flex flex-col sm:flex-row gap-4 justify-center mb-12 ${
             isButtonsInView ? "stagger-children" : "opacity-0"
           }`}
         >
-          <CTALink
+          <CTAButton
             variant="primary"
-            href="/contact"
+            onClick={handleBookDiscoveryCall}
             icon={
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             }
           >
             Book a Discovery Call
-          </CTALink>
+          </CTAButton>
 
-          <CTALink
+          <CTAButton
             variant="secondary"
-            href="/features"
+            onClick={handleStartSamples}
             icon={<Play className="w-5 h-5" />}
           >
             Start Your Samples
-          </CTALink>
+          </CTAButton>
         </div>
 
         {/* Quick Stats */}

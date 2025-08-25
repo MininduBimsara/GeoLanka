@@ -3,12 +3,20 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Menu, X, Sun, Moon, MapPin, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTheme } from "@/components/ThemeProvider";
 import { useDebounceResize } from "@/hooks/usePerformanceOptimizations";
 
 const GeoLankaNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
+
+  // Ensure component is mounted before accessing theme
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Optimized scroll handler with debouncing
   useEffect(() => {
@@ -30,6 +38,12 @@ const GeoLankaNavbar = () => {
   }, []);
 
   const { isDarkMode, toggleTheme } = useTheme();
+
+  // Handler for navigating to contact page
+  const handleStartMapping = () => {
+    router.push("/contact");
+    setIsMenuOpen(false); // Close mobile menu if open
+  };
 
   // Memoize navigation links to prevent unnecessary re-renders
   const navLinks = useMemo(
@@ -64,6 +78,8 @@ const GeoLankaNavbar = () => {
 
   // Optimized background class calculation
   const getBackgroundClass = useMemo(() => {
+    if (!isMounted) return "bg-transparent"; // Default during SSR
+
     if (isDarkMode) {
       return scrolled
         ? "bg-[#0a0c0b]/95 backdrop-blur-md shadow-lg"
@@ -73,7 +89,64 @@ const GeoLankaNavbar = () => {
         ? "bg-white/95 backdrop-blur-md shadow-lg"
         : "bg-transparent";
     }
-  }, [isDarkMode, scrolled]);
+  }, [isDarkMode, scrolled, isMounted]);
+
+  // Don't render theme-dependent content until mounted
+  if (!isMounted) {
+    return (
+      <nav className="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            {/* Logo */}
+            <Logo />
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8">
+              {navLinks.map((link, index) => (
+                <div key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-700 hover:text-emerald-600 font-medium text-base transition-colors duration-200 relative group"
+                  >
+                    <span
+                      className="block animate-slide-in-left"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      {link.name}
+                    </span>
+                    <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300"></div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+
+            {/* Right Side Actions */}
+            <div className="flex items-center space-x-4">
+              {/* Placeholder for theme toggle during SSR */}
+              <div className="w-9 h-9 rounded-full bg-gray-100 opacity-50"></div>
+
+              {/* CTA Button - Desktop */}
+              <button
+                onClick={handleStartMapping}
+                className="hidden lg:block bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium text-sm btn-hover shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                Start Mapping
+              </button>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="lg:hidden p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-200 btn-hover"
+                aria-label="Toggle mobile menu"
+              >
+                <Menu className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav
@@ -106,7 +179,7 @@ const GeoLankaNavbar = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
-            {/* Dark Mode Toggle */}
+            {/* Dark Mode Toggle - Only render after mount */}
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-100 dark:bg-[#1a1c1b] hover:bg-gray-200 dark:hover:bg-[#2a2c2b] transition-colors duration-200 btn-hover"
@@ -119,12 +192,13 @@ const GeoLankaNavbar = () => {
               )}
             </button>
 
-            {/* CTA Button - Desktop - Updated with Link */}
-            <Link href="/contact">
-              <button className="hidden lg:block bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium text-sm btn-hover shadow-lg hover:shadow-xl transition-all duration-300">
-                Start Mapping
-              </button>
-            </Link>
+            {/* CTA Button - Desktop - Fixed with onClick */}
+            <button
+              onClick={handleStartMapping}
+              className="hidden lg:block bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium text-sm btn-hover shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Start Mapping
+            </button>
 
             {/* Mobile Menu Button */}
             <button
@@ -159,15 +233,14 @@ const GeoLankaNavbar = () => {
                 </Link>
               </div>
             ))}
-            <Link href="/contact">
-              <button
-                className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-full font-medium transition-all duration-200 btn-hover animate-fade-in-up"
-                style={{ animationDelay: "0.5s" }}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Start Mapping
-              </button>
-            </Link>
+            {/* Mobile CTA Button - Fixed with onClick */}
+            <button
+              onClick={handleStartMapping}
+              className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-full font-medium transition-all duration-200 btn-hover animate-fade-in-up"
+              style={{ animationDelay: "0.5s" }}
+            >
+              Start Mapping
+            </button>
           </div>
         </div>
       )}
