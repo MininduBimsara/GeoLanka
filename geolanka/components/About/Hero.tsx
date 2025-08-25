@@ -1,68 +1,38 @@
-"use client";
+import React from "react";
+import { MapPin } from "lucide-react";
 
-import { motion } from "framer-motion";
-
-export function HeroSection() {
+const AboutHeroHeader = () => {
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-[#0A0A0A] min-h-screen flex items-center transition-colors duration-300">
-      <div className="max-w-7xl mx-auto w-full text-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full border border-emerald-200 dark:border-emerald-700 mb-8 transition-colors duration-300"
-        >
-          <span className="font-medium text-sm uppercase tracking-wide">
-            GeoLanka Platform
-          </span>
-        </motion.div>
+    <div className="relative">
+      {/* Hero Section with Sri Lankan Landscape */}
+      <div
+        className="relative h-80 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            'url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=800&fit=crop&q=80")',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60" />
 
-        {/* Main Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-12"
-        >
-          <h1 className="text-6xl lg:text-8xl font-serif font-bold text-gray-800 dark:text-white mb-8 leading-tight transition-colors duration-300">
-            GeoLanka Geo-Mapping
-          </h1>
-          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
-            An all-in-one solution for intelligent land management and
-            environmental protection across Sri Lanka
-          </p>
-        </motion.div>
+        {/* Location Badge */}
+        <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 flex items-center gap-2">
+          <MapPin className="w-4 h-4 text-gray-600" />
+          <span className="text-sm font-medium text-gray-800">Sri Lanka</span>
+        </div>
 
-        {/* Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
-        >
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-300">
-            Get Started
-          </button>
-          <button className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:border-emerald-600 dark:hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-300">
-            Learn More
-          </button>
-        </motion.div>
-
-        {/* Simple Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-            alt="GeoLanka Platform"
-            className="w-full h-96 object-cover rounded-3xl shadow-2xl dark:shadow-gray-900/50 transition-all duration-300"
-          />
-        </motion.div>
+        {/* Title - Simple "ABOUT" text */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-white">
+            <h1 className="text-6xl lg:text-7xl font-light mb-4">ABOUT</h1>
+            <p className="text-lg opacity-90 max-w-2xl mx-auto px-6">
+              Discover our mission to revolutionize geospatial mapping and
+              environmental monitoring across Sri Lanka
+            </p>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default AboutHeroHeader;

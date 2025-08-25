@@ -2,7 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
 interface HeroProps {
   onExploreClick?: () => void;
 }
@@ -63,17 +64,6 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
             initial="initial"
             animate="animate"
           >
-            {/* Badge */}
-            <motion.div
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-emerald-500/20 border border-emerald-400/30 rounded-full backdrop-blur-sm"
-              variants={fadeInUp}
-            >
-              <Sparkles className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm font-medium text-emerald-300">
-                New: Our AI Integration just landed
-              </span>
-            </motion.div>
-
             {/* Main Headline */}
             <motion.h1
               className="text-5xl lg:text-7xl font-bold text-white leading-tight"

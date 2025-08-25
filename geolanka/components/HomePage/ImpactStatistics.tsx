@@ -209,13 +209,6 @@ const ImpactStatistics: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center space-x-2 bg-stone-100 dark:bg-gray-800 px-4 py-2 rounded-full mb-6 border border-stone-200 dark:border-gray-700 transition-colors duration-300">
-            <Globe className="w-4 h-4 text-gray-700 dark:text-gray-300" />
-            <span className="text-gray-700 dark:text-gray-300 font-medium text-sm tracking-wide uppercase transition-colors duration-300">
-              Impact Metrics
-            </span>
-          </div>
-
           <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Transforming Sri Lanka's Digital Map
           </h2>
