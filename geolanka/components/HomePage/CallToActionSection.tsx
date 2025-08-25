@@ -66,7 +66,7 @@ const CallToActionSection: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
+          <h2 className="text-4xl lg:text-5xl font-sans font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Let's Start Mapping
           </h2>
 
@@ -107,7 +107,7 @@ const CallToActionSection: React.FC = () => {
           {/* Quick Stats */}
           <div className="flex items-center justify-center space-x-8">
             <div className="text-center">
-              <div className="text-2xl font-serif font-bold text-gray-800 dark:text-white transition-colors duration-300">
+              <div className="text-2xl font-sans font-bold text-gray-800 dark:text-white transition-colors duration-300">
                 Free
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
@@ -116,7 +116,7 @@ const CallToActionSection: React.FC = () => {
             </div>
             <div className="w-px h-12 bg-gray-300 dark:bg-gray-600 transition-colors duration-300"></div>
             <div className="text-center">
-              <div className="text-2xl font-serif font-bold text-gray-800 dark:text-white transition-colors duration-300">
+              <div className="text-2xl font-sans font-bold text-gray-800 dark:text-white transition-colors duration-300">
                 50K+
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
@@ -125,7 +125,7 @@ const CallToActionSection: React.FC = () => {
             </div>
             <div className="w-px h-12 bg-gray-300 dark:bg-gray-600 transition-colors duration-300"></div>
             <div className="text-center">
-              <div className="text-2xl font-serif font-bold text-gray-800 dark:text-white transition-colors duration-300">
+              <div className="text-2xl font-sans font-bold text-gray-800 dark:text-white transition-colors duration-300">
                 24/7
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">

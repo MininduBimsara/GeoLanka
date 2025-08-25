@@ -105,14 +105,14 @@ const StatCard: React.FC<StatCardProps> = ({
             <div
               className={`${
                 isLarge ? "text-6xl lg:text-7xl" : "text-4xl lg:text-5xl"
-              } font-serif font-bold text-white`}
+              } font-sans font-bold text-white`}
             >
               {number}
             </div>
             <h3
               className={`${
                 isLarge ? "text-2xl" : "text-xl"
-              } font-serif font-bold text-stone-100 dark:text-stone-200 transition-colors duration-300`}
+              } font-sans font-bold text-stone-100 dark:text-stone-200 transition-colors duration-300`}
             >
               {label}
             </h3>
@@ -209,7 +209,7 @@ const ImpactStatistics: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
+          <h2 className="text-4xl lg:text-5xl font-sans font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Transforming Sri Lanka's Digital Map
           </h2>
 
