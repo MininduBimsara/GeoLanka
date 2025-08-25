@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { Suspense } from "react";
+import Image from "next/image";
 import {
   MapPin,
   Route,
@@ -10,13 +10,14 @@ import {
   Users,
   BarChart3,
 } from "lucide-react";
+import { useInView } from "@/hooks/usePerformanceOptimizations";
 
 interface FeatureCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
   image: string;
-  delay: number;
+  index: number;
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({
@@ -24,22 +25,30 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   title,
   description,
   image,
-  delay,
+  index,
 }) => {
+  const [ref, isInView] = useInView({ once: true });
+
   return (
-    <motion.div
-      className="relative group h-80 rounded-2xl overflow-hidden shadow-xl dark:shadow-gray-900/30 transition-all duration-300"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
-      whileHover={{ y: -5 }}
+    <div
+      ref={ref}
+      className={`relative group h-80 rounded-2xl overflow-hidden shadow-xl dark:shadow-gray-900/30 card-hover transition-all duration-300 ${
+        isInView ? "animate-fade-in-up" : "opacity-0"
+      }`}
+      style={{ animationDelay: `${index * 0.1}s` }}
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${image})` }}
-      />
+      {/* Optimized Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          quality={80}
+          loading="lazy"
+        />
+      </div>
 
       {/* Geometric Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 dark:from-black/70 via-black/50 dark:via-black/60 to-black/70 dark:to-black/80 transition-colors duration-300" />
@@ -56,7 +65,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       <div className="relative z-10 p-6 h-full flex flex-col justify-between">
         {/* Icon */}
         <div className="flex justify-between items-start">
-          <div className="w-12 h-12 bg-white/20 dark:bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center transition-colors duration-300">
+          <div className="w-12 h-12 bg-white/20 dark:bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center transition-colors duration-300 gpu-accelerated">
             {icon}
           </div>
           <div className="w-8 h-8 border-2 border-stone-300/50 dark:border-stone-400/50 rounded-full transition-colors duration-300" />
@@ -70,11 +79,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 const KeyFeaturesGrid: React.FC = () => {
+  const [headerRef, isHeaderInView] = useInView({ once: true });
+
   const features = [
     {
       icon: <MapPin className="w-6 h-6 text-white" />,
@@ -82,7 +93,7 @@ const KeyFeaturesGrid: React.FC = () => {
       description:
         "Advanced GPS technology for precise location tracking across Sri Lanka with sub-meter accuracy.",
       image:
-        "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=600&fit=crop&auto=format",
     },
     {
       icon: <Route className="w-6 h-6 text-white" />,
@@ -90,7 +101,7 @@ const KeyFeaturesGrid: React.FC = () => {
       description:
         "AI-powered route optimization considering traffic, weather, and road conditions for efficient navigation.",
       image:
-        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=600&fit=crop&auto=format",
     },
     {
       icon: <Satellite className="w-6 h-6 text-white" />,
@@ -98,7 +109,7 @@ const KeyFeaturesGrid: React.FC = () => {
       description:
         "High-resolution satellite imagery and real-time data for comprehensive mapping solutions.",
       image:
-        "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=500&h=600&fit=crop&auto=format",
     },
     {
       icon: <Navigation className="w-6 h-6 text-white" />,
@@ -106,7 +117,7 @@ const KeyFeaturesGrid: React.FC = () => {
       description:
         "Turn-by-turn navigation with voice guidance optimized for Sri Lankan roads and landmarks.",
       image:
-        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=600&fit=crop&auto=format",
     },
     {
       icon: <Users className="w-6 h-6 text-white" />,
@@ -114,7 +125,7 @@ const KeyFeaturesGrid: React.FC = () => {
       description:
         "Collaborative platform allowing local communities to contribute and verify mapping data.",
       image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=600&fit=crop&auto=format",
     },
     {
       icon: <BarChart3 className="w-6 h-6 text-white" />,
@@ -122,7 +133,7 @@ const KeyFeaturesGrid: React.FC = () => {
       description:
         "Comprehensive analytics and reporting tools for businesses and government organizations.",
       image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=600&fit=crop&auto=format",
     },
   ];
 
@@ -134,12 +145,11 @@ const KeyFeaturesGrid: React.FC = () => {
 
       <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 ${
+            isHeaderInView ? "animate-fade-in-up" : "opacity-0"
+          }`}
         >
           <h2 className="text-4xl lg:text-5xl font-sans font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Advanced Mapping Solutions
@@ -158,21 +168,33 @@ const KeyFeaturesGrid: React.FC = () => {
             Lankan geography, providing unparalleled accuracy and comprehensive
             coverage.
           </p>
-        </motion.div>
+        </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-              image={feature.image}
-              delay={index * 0.1}
-            />
-          ))}
-        </div>
+        <Suspense
+          fallback={
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {Array(6)
+                .fill(0)
+                .map((_, i) => (
+                  <div key={i} className="skeleton h-80 rounded-2xl" />
+                ))}
+            </div>
+          }
+        >
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <FeatureCard
+                key={index}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+                image={feature.image}
+                index={index}
+              />
+            ))}
+          </div>
+        </Suspense>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { Suspense } from "react";
+import Image from "next/image";
 import {
   MapPin,
   Users,
@@ -10,6 +10,7 @@ import {
   TrendingUp,
   Globe,
 } from "lucide-react";
+import { useInView } from "@/hooks/usePerformanceOptimizations";
 
 interface StatCardProps {
   icon: React.ReactNode;
@@ -31,23 +32,34 @@ const StatCard: React.FC<StatCardProps> = ({
   size = "medium",
 }) => {
   const isLarge = size === "large";
+  const [ref, isInView] = useInView({ once: true });
 
   return (
-    <motion.div
-      className={`relative group rounded-2xl overflow-hidden shadow-xl dark:shadow-gray-900/30 transition-all duration-300 ${
+    <div
+      ref={ref}
+      className={`relative group rounded-2xl overflow-hidden shadow-xl dark:shadow-gray-900/30 hover-lift transition-all duration-300 ${
         isLarge ? "md:col-span-2 lg:col-span-2 h-96" : "h-80"
-      }`}
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
-      whileHover={{ y: -5 }}
+      } ${isInView ? "animate-scale-in" : "opacity-0"}`}
+      style={{ animationDelay: `${delay}s` }}
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${image})` }}
-      />
+      {/* Optimized Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={image}
+          alt={label}
+          fill
+          sizes={
+            isLarge
+              ? "(max-width: 768px) 100vw, 66vw"
+              : "(max-width: 768px) 100vw, 33vw"
+          }
+          className="object-cover"
+          quality={75}
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+        />
+      </div>
 
       {/* Geometric Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/70 dark:from-black/80 via-black/60 dark:via-black/70 to-black/80 dark:to-black/85 transition-colors duration-300" />
@@ -90,7 +102,7 @@ const StatCard: React.FC<StatCardProps> = ({
           <div
             className={`${
               isLarge ? "w-16 h-16" : "w-12 h-12"
-            } bg-white/20 dark:bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center transition-colors duration-300`}
+            } bg-white/20 dark:bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center transition-colors duration-300 gpu-accelerated`}
           >
             {icon}
           </div>
@@ -126,11 +138,13 @@ const StatCard: React.FC<StatCardProps> = ({
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 const ImpactStatistics: React.FC = () => {
+  const [headerRef, isHeaderInView] = useInView({ once: true });
+
   const stats = [
     {
       icon: <MapPin className="w-8 h-8 text-white" />,
@@ -139,7 +153,7 @@ const ImpactStatistics: React.FC = () => {
       description:
         "Comprehensive coverage of Sri Lankan cities, towns, and rural areas with precise coordinates.",
       image:
-        "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=600&fit=crop&auto=format",
       size: "large" as const,
     },
     {
@@ -149,7 +163,7 @@ const ImpactStatistics: React.FC = () => {
       description:
         "Growing community of users across Sri Lanka utilizing our mapping platform daily.",
       image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=600&fit=crop&auto=format",
       size: "medium" as const,
     },
     {
@@ -159,7 +173,7 @@ const ImpactStatistics: React.FC = () => {
       description:
         "Smart route calculations saving time and fuel for businesses and individuals.",
       image:
-        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=600&fit=crop&auto=format",
       size: "medium" as const,
     },
     {
@@ -169,7 +183,7 @@ const ImpactStatistics: React.FC = () => {
       description:
         "Enterprise clients leveraging our mapping solutions for logistics and operations.",
       image:
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=600&fit=crop&auto=format",
       size: "medium" as const,
     },
     {
@@ -179,7 +193,7 @@ const ImpactStatistics: React.FC = () => {
       description:
         "Industry-leading precision in location data and navigation services.",
       image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=600&fit=crop&auto=format",
       size: "medium" as const,
     },
     {
@@ -189,7 +203,7 @@ const ImpactStatistics: React.FC = () => {
       description:
         "Round-the-clock technical support and customer service for all users.",
       image:
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=600&fit=crop&auto=format",
       size: "medium" as const,
     },
   ];
@@ -202,12 +216,11 @@ const ImpactStatistics: React.FC = () => {
 
       <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 ${
+            isHeaderInView ? "animate-fade-in-up" : "opacity-0"
+          }`}
         >
           <h2 className="text-4xl lg:text-5xl font-sans font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Transforming Sri Lanka's Digital Map
@@ -225,23 +238,35 @@ const ImpactStatistics: React.FC = () => {
             Real numbers that demonstrate our commitment to revolutionizing
             geospatial technology and mapping services across Sri Lanka.
           </p>
-        </motion.div>
+        </div>
 
         {/* Statistics Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
-            <StatCard
-              key={index}
-              icon={stat.icon}
-              number={stat.number}
-              label={stat.label}
-              description={stat.description}
-              image={stat.image}
-              delay={index * 0.1}
-              size={stat.size}
-            />
-          ))}
-        </div>
+        <Suspense
+          fallback={
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {Array(6)
+                .fill(0)
+                .map((_, i) => (
+                  <div key={i} className="skeleton h-80 rounded-2xl" />
+                ))}
+            </div>
+          }
+        >
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <StatCard
+                key={index}
+                icon={stat.icon}
+                number={stat.number}
+                label={stat.label}
+                description={stat.description}
+                image={stat.image}
+                delay={index * 0.1}
+                size={stat.size}
+              />
+            ))}
+          </div>
+        </Suspense>
       </div>
     </section>
   );
