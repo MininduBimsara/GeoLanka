@@ -141,13 +141,6 @@ const KeyFeaturesGrid: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center space-x-2 bg-emerald-100 dark:bg-emerald-900/50 px-4 py-2 rounded-full mb-6 border border-emerald-200 dark:border-emerald-700 transition-colors duration-300">
-            <MapPin className="w-4 h-4 text-emerald-700 dark:text-emerald-300" />
-            <span className="text-emerald-700 dark:text-emerald-300 font-medium text-sm tracking-wide uppercase transition-colors duration-300">
-              Platform Features
-            </span>
-          </div>
-
           <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Advanced Mapping Solutions
           </h2>
