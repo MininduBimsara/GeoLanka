@@ -164,14 +164,16 @@ const GeoLankaFooter = () => {
               </li>
             </ul>
 
-            {/* CTA in Footer */}
-            <motion.button
-              className="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white py-3 px-4 rounded-full font-medium text-sm transition-all duration-200 shadow-lg hover:shadow-xl"
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Book Discovery Call
-            </motion.button>
+            {/* CTA in Footer - Updated with Link */}
+            <Link href="/contact">
+              <motion.button
+                className="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white py-3 px-4 rounded-full font-medium text-sm transition-all duration-200 shadow-lg hover:shadow-xl"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Book Discovery Call
+              </motion.button>
+            </Link>
           </div>
         </div>
 

@@ -11,9 +11,6 @@ import {
   Linkedin,
   Instagram,
   Send,
-  Clock,
-  Users,
-  Globe,
 } from "lucide-react";
 
 const ContactPage = () => {
@@ -220,45 +217,6 @@ const ContactPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="space-y-6"
               >
-                {/* Statistics Cards */}
-                <div className="grid grid-cols-3 gap-6 mb-6">
-                  <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 text-center transition-colors duration-300">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                      <Clock className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">
-                      24/7
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Support
-                    </div>
-                  </div>
-
-                  <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 text-center transition-colors duration-300">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                      <Users className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">
-                      500+
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Clients
-                    </div>
-                  </div>
-
-                  <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 text-center transition-colors duration-300">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                      <Globe className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">
-                      15+
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Countries
-                    </div>
-                  </div>
-                </div>
-
                 {/* Contact Form Card */}
                 <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-300">
                   <div className="mb-8">
@@ -270,8 +228,32 @@ const ContactPage = () => {
                       within 24 hours
                     </p>
                   </div>
+                  <form
+                    action="https://formsubmit.co/minindubim@gmail.com"
+                    method="POST"
+                    className="space-y-6"
+                  >
+                    {/* FormSubmit.co Configuration - Fixed */}
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input
+                      type="hidden"
+                      name="_autoresponse"
+                      value="Thank you for contacting GeoLanka! We have received your message and will get back to you within 24 hours."
+                    />
+                    <input type="hidden" name="_template" value="table" />
+                    {/* Remove the duplicate _next field or set a specific URL */}
+                    <input
+                      type="hidden"
+                      name="_next"
+                      value="https://yourdomain.com/thank-you"
+                    />
+                    {/* Honeypot field for spam protection */}
+                    <input
+                      type="text"
+                      name="_honey"
+                      style={{ display: "none" }}
+                    />
 
-                  <div className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -281,8 +263,6 @@ const ContactPage = () => {
                           type="text"
                           name="name"
                           required
-                          value={formData.name}
-                          onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="Enter your full name"
                         />
@@ -294,8 +274,6 @@ const ContactPage = () => {
                         <input
                           type="text"
                           name="company"
-                          value={formData.company}
-                          onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="Your company name"
                         />
@@ -310,8 +288,6 @@ const ContactPage = () => {
                         <input
                           type="tel"
                           name="phone"
-                          value={formData.phone}
-                          onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="+94 XX XXX XXXX"
                         />
@@ -324,8 +300,6 @@ const ContactPage = () => {
                           type="email"
                           name="email"
                           required
-                          value={formData.email}
-                          onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="your@email.com"
                         />
@@ -340,8 +314,6 @@ const ContactPage = () => {
                         type="text"
                         name="subject"
                         required
-                        value={formData.subject}
-                        onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                         placeholder="What can we help you with?"
                       />
@@ -354,8 +326,6 @@ const ContactPage = () => {
                       <textarea
                         name="message"
                         required
-                        value={formData.message}
-                        onChange={handleInputChange}
                         rows={6}
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white resize-none transition-all"
                         placeholder="Tell us about your project, requirements, or any questions you have..."
@@ -371,51 +341,31 @@ const ContactPage = () => {
                       <Send className="w-5 h-5" />
                       <span>Send Message</span>
                     </motion.button>
-                  </div>
+                  </form>
                 </div>
 
-                {/* Map Section */}
-                <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 h-64 relative transition-colors duration-300">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                      backgroundImage:
-                        'url("https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=400&fit=crop&q=80")',
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-emerald-900/20 dark:bg-emerald-900/40" />
-
-                  {/* Office Pin */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <motion.div
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center border-2 border-white shadow-lg"
-                    >
-                      <MapPin className="w-4 h-4 text-white" />
-                    </motion.div>
+                {/* Google Maps Section */}
+                <div className="bg-white dark:bg-[#1a1c1b] rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+                  <div className="p-6 border-b border-gray-100 dark:border-gray-700">
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                      Find Us Here
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      Visit our office at Lotus Tower Complex, Colombo
+                    </p>
                   </div>
 
-                  {/* Office Info */}
-                  <div className="absolute bottom-4 left-4">
-                    <div className="bg-white/95 dark:bg-[#0a0c0b]/95 backdrop-blur-sm rounded-xl px-4 py-3">
-                      <h4 className="font-bold text-gray-800 dark:text-white text-sm mb-1">
-                        GeoLanka Head Office
-                      </h4>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
-                        Lotus Tower Complex
-                        <br />
-                        Colombo 01, Sri Lanka
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* View Directions Button */}
-                  <div className="absolute bottom-4 right-4">
-                    <button className="bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-                      <MapPin className="w-4 h-4" />
-                      Directions
-                    </button>
+                  <div className="relative h-80">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.63206680726!2d79.8437927!3d6.9345031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2592431e92cf7%3A0x9f9525402fc84319!2sChatham%20St%2C%20Colombo!5e0!3m2!1sen!2slk!4v1756108608870!5m2!1sen!2slk"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="w-full h-full"
+                    />
                   </div>
                 </div>
               </motion.div>

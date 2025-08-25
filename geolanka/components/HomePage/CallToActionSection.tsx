@@ -1,21 +1,22 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
 import { useInView } from "@/hooks/usePerformanceOptimizations";
 
-interface CTAButtonProps {
+interface CTALinkProps {
   variant: "primary" | "secondary";
   children: React.ReactNode;
   icon?: React.ReactNode;
-  onClick?: () => void;
+  href: string;
   className?: string;
 }
 
-const CTAButton: React.FC<CTAButtonProps> = React.memo(
-  ({ variant, children, icon, onClick, className = "" }) => {
+const CTALink: React.FC<CTALinkProps> = React.memo(
+  ({ variant, children, icon, href, className = "" }) => {
     const baseClasses =
-      "group relative px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl btn-hover transition-all duration-300 ease-out";
+      "group relative px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl btn-hover transition-all duration-300 ease-out inline-flex items-center";
 
     const variantClasses =
       variant === "primary"
@@ -23,33 +24,25 @@ const CTAButton: React.FC<CTAButtonProps> = React.memo(
         : "bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-emerald-700 dark:text-emerald-400 border-2 border-emerald-600 dark:border-emerald-500";
 
     return (
-      <button
+      <Link
+        href={href}
         className={`${baseClasses} ${variantClasses} ${className} transition-colors duration-300`}
-        onClick={onClick}
       >
         <span className="flex items-center space-x-3">
           <span>{children}</span>
           {icon}
         </span>
-      </button>
+      </Link>
     );
   }
 );
 
-CTAButton.displayName = "CTAButton";
+CTALink.displayName = "CTALink";
 
 const CallToActionSection: React.FC = () => {
   const [headerRef, isHeaderInView] = useInView({ once: true });
   const [buttonsRef, isButtonsInView] = useInView({ once: true });
   const [statsRef, isStatsInView] = useInView({ once: true });
-
-  const handleStartMapping = React.useCallback(() => {
-    console.log("Start mapping clicked");
-  }, []);
-
-  const handleWatchDemo = React.useCallback(() => {
-    console.log("Watch demo clicked");
-  }, []);
 
   // Memoize stats to prevent re-renders
   const stats = React.useMemo(
@@ -102,30 +95,30 @@ const CallToActionSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Action Buttons */}
+        {/* Action Buttons with Links */}
         <div
           ref={buttonsRef}
           className={`flex flex-col sm:flex-row gap-4 justify-center mb-12 ${
             isButtonsInView ? "stagger-children" : "opacity-0"
           }`}
         >
-          <CTAButton
+          <CTALink
             variant="primary"
-            onClick={handleStartMapping}
+            href="/contact"
             icon={
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             }
           >
             Book a Discovery Call
-          </CTAButton>
+          </CTALink>
 
-          <CTAButton
+          <CTALink
             variant="secondary"
-            onClick={handleWatchDemo}
+            href="/features"
             icon={<Play className="w-5 h-5" />}
           >
             Start Your Samples
-          </CTAButton>
+          </CTALink>
         </div>
 
         {/* Quick Stats */}
