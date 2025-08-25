@@ -16,18 +16,13 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
-  // Enable experimental optimizations
+  // Remove problematic experimental features that cause critters error
   experimental: {
-    // Optimize CSS loading
-    optimizeCss: true,
-    // Optimize package imports to reduce bundle size
-    optimizePackageImports: [
-      "lucide-react",
-      "framer-motion",
-      "@headlessui/react",
-    ],
-    // Enable server components optimization
-    serverComponentsExternalPackages: [],
+    // Remove optimizeCss as it requires critters
+    // optimizeCss: true, // Commented out - causes critters error
+
+    // Keep only safe optimizations
+    optimizePackageImports: ["lucide-react", "framer-motion"],
   },
 
   // Webpack optimization
@@ -74,21 +69,7 @@ const nextConfig = {
 
       // Minimize bundle size
       config.optimization.minimize = true;
-
-      // Remove console logs in production
-      config.plugins.push(
-        new webpack.DefinePlugin({
-          "process.env.NODE_ENV": JSON.stringify("production"),
-        })
-      );
     }
-
-    // Optimize imports
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      // Use ES modules for better tree shaking
-      "framer-motion": "framer-motion/dist/es",
-    };
 
     return config;
   },
@@ -124,16 +105,6 @@ const nextConfig = {
         ],
       },
       {
-        // Cache fonts for 1 year
-        source: "/fonts/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
         // Security headers
         source: "/(.*)",
         headers: [
@@ -160,20 +131,6 @@ const nextConfig = {
         ],
       },
     ];
-  },
-
-  // Redirect optimization
-  async redirects() {
-    return [
-      // Add any redirects here
-    ];
-  },
-
-  // Enable static optimization for pages that don't need server-side rendering
-  experimental: {
-    ...nextConfig.experimental,
-    // Enable static export for applicable pages
-    output: undefined, // Set to 'export' for full static export if needed
   },
 
   // Bundle analyzer (only in development with ANALYZE=true)

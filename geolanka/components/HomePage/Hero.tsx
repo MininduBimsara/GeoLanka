@@ -3,14 +3,20 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { useInView } from "@/hooks/usePerformanceOptimizations";
 
 interface HeroProps {
   onExploreClick?: () => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
+  const [ref, isInView] = useInView({ once: true });
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black">
+    <section
+      className="relative min-h-screen overflow-hidden bg-black"
+      ref={ref}
+    >
       {/* Optimized Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -35,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+            className="absolute w-1 h-1 bg-white rounded-full pulse-optimized"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -49,26 +55,30 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-8 py-20 min-h-screen flex items-center justify-center">
         <div className="max-w-4xl mx-auto">
-          {/* Centered Content - Using CSS animations instead of Framer Motion */}
-          <div className="space-y-8 text-center animate-fade-in-up">
+          {/* Centered Content - Using optimized CSS animations */}
+          <div
+            className={`space-y-8 text-center ${
+              isInView ? "stagger-children" : ""
+            }`}
+          >
             {/* Main Headline - Optimized gradient text */}
             <h1 className="text-5xl lg:text-7xl font-sans font-bold text-white leading-tight">
-              <span className="bg-gradient-to-r from-white via-emerald-400 to-emerald-600 bg-clip-text text-transparent">
+              <span className="gradient-text-animate">
                 Think better with GeoLanka
               </span>
             </h1>
 
-            {/* Subtitle - Removed Framer Motion */}
-            <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto animate-fade-in-up-delay-1">
+            {/* Subtitle */}
+            <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
               Never miss a location, insight or connection. Advanced geo-mapping
               that transforms how you explore and understand our world.
             </p>
 
             {/* CTA Button - CSS hover effects instead of Framer Motion */}
-            <div className="pt-4 animate-fade-in-up-delay-2">
+            <div className="pt-4">
               <button
                 onClick={onExploreClick}
-                className="group bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1 hover:scale-105 flex items-center space-x-3 mx-auto"
+                className="group btn-hover bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-2xl flex items-center space-x-3 mx-auto"
               >
                 <span>Let's Explore</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -76,21 +86,21 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
             </div>
 
             {/* Feature Pills - Optimized animations */}
-            <div className="flex flex-wrap gap-4 justify-center pt-6 animate-fade-in-up-delay-3">
+            <div className="flex flex-wrap gap-4 justify-center pt-6">
               <div className="flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-emerald-400 rounded-full pulse-optimized"></div>
                 <span className="text-sm text-white font-medium">
                   Real-time Data
                 </span>
               </div>
               <div className="flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
-                <div className="w-2 h-2 bg-emerald-300 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-emerald-300 rounded-full pulse-optimized"></div>
                 <span className="text-sm text-white font-medium">
                   AI-Powered
                 </span>
               </div>
               <div className="flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-emerald-500 rounded-full pulse-optimized"></div>
                 <span className="text-sm text-white font-medium">
                   Global Coverage
                 </span>
