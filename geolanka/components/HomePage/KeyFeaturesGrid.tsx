@@ -64,7 +64,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 
         {/* Text Content */}
         <div className="space-y-3">
-          <h3 className="text-xl font-serif font-bold text-white">{title}</h3>
+          <h3 className="text-xl font-sans font-bold text-white">{title}</h3>
           <p className="text-stone-100 dark:text-stone-200 text-sm leading-relaxed transition-colors duration-300">
             {description}
           </p>
@@ -141,7 +141,7 @@ const KeyFeaturesGrid: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
+          <h2 className="text-4xl lg:text-5xl font-sans font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Advanced Mapping Solutions
           </h2>
 

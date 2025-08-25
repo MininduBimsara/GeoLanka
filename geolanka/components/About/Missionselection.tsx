@@ -37,7 +37,7 @@ export function MissionSection() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl lg:text-6xl font-serif font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
+          <h2 className="text-4xl lg:text-6xl font-sans font-bold text-gray-800 dark:text-white mb-6 transition-colors duration-300">
             Our Mission
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">

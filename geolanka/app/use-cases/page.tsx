@@ -164,7 +164,7 @@ const UseCasesPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl lg:text-7xl font-serif font-bold text-gray-800 dark:text-white mb-6">
+              <h1 className="text-5xl lg:text-7xl font-sans font-bold text-gray-800 dark:text-white mb-6">
                 Real-World Applications
               </h1>
               <p className="text-xl lg:text-2xl font-light text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
@@ -186,7 +186,7 @@ const UseCasesPage = () => {
                   variants={fadeInUp}
                   className="bg-white/80 dark:bg-[#1a1c1b]/80 backdrop-blur-sm rounded-2xl p-6 border border-stone-200/50 dark:border-gray-700/50"
                 >
-                  <div className="text-3xl lg:text-4xl font-serif font-bold text-emerald-700 dark:text-emerald-400">
+                  <div className="text-3xl lg:text-4xl font-sans font-bold text-emerald-700 dark:text-emerald-400">
                     {metric.number}
                   </div>
                   <div className="text-sm font-medium text-gray-800 dark:text-white mt-1">
@@ -216,7 +216,7 @@ const UseCasesPage = () => {
                   <p className="text-emerald-600 dark:text-emerald-400 font-medium text-sm uppercase tracking-wide mb-4">
                     Latest use cases
                   </p>
-                  <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-800 dark:text-white mb-6">
+                  <h2 className="text-4xl lg:text-5xl font-sans font-bold text-gray-800 dark:text-white mb-6">
                     You are seconds away from a world of precise, data-driven
                     mapping solutions
                   </h2>
@@ -237,7 +237,7 @@ const UseCasesPage = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="mt-12 bg-white dark:bg-[#1a1c1b] rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700"
                 >
-                  <h3 className="text-xl font-serif font-bold text-gray-800 dark:text-white mb-4">
+                  <h3 className="text-xl font-sans font-bold text-gray-800 dark:text-white mb-4">
                     Flood Risk Assessment
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
@@ -400,7 +400,7 @@ const UseCasesPage = () => {
               className="text-center"
             >
               {/* Quote icon */}
-              <div className="text-6xl text-emerald-600 dark:text-emerald-400 font-serif mb-8">
+              <div className="text-6xl text-emerald-600 dark:text-emerald-400 font-sans mb-8">
                 "
               </div>
 
@@ -456,7 +456,7 @@ const UseCasesPage = () => {
             >
               <MapPin className="w-16 h-16 text-emerald-400 mx-auto mb-6" />
 
-              <h2 className="text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
+              <h2 className="text-4xl lg:text-5xl font-sans font-bold text-white mb-6">
                 Ready to Transform Your Project?
               </h2>
 
