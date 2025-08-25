@@ -33,7 +33,7 @@ const SectionSkeleton = ({ height = "h-96" }: { height?: string }) => (
 export default function Home() {
   // Preload critical resources
   usePreloadResources([
-    "/earth-optimized.webp",
+    "/Earth.png",
     "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=600&fit=crop&auto=format",
     "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=600&fit=crop&auto=format",
   ]);

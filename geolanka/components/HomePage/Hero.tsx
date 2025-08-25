@@ -20,7 +20,7 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
       {/* Optimized Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/earth-optimized.webp" // Converted from Earth.png
+          src="/Earth.png" // Converted from Earth.png
           alt="Earth from space showing geographical data"
           fill
           priority // Critical for LCP
