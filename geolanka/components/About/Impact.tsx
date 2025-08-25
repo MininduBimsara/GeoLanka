@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const impactAreas = [
   {
@@ -106,16 +107,18 @@ export function ImpactSection() {
           ))}
         </motion.div>
 
-        {/* CTA Button */}
+        {/* CTA Button - Updated with Link */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-300">
-            Start Your Journey to Smart Mapping
-          </button>
+          <Link href="/contact">
+            <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105">
+              Start Your Journey to Smart Mapping
+            </button>
+          </Link>
         </motion.div>
       </div>
     </section>

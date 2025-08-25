@@ -119,10 +119,12 @@ const GeoLankaNavbar = () => {
               )}
             </button>
 
-            {/* CTA Button - Desktop */}
-            <button className="hidden lg:block bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium text-sm btn-hover shadow-lg hover:shadow-xl">
-              Start Mapping
-            </button>
+            {/* CTA Button - Desktop - Updated with Link */}
+            <Link href="/contact">
+              <button className="hidden lg:block bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium text-sm btn-hover shadow-lg hover:shadow-xl transition-all duration-300">
+                Start Mapping
+              </button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -157,12 +159,15 @@ const GeoLankaNavbar = () => {
                 </Link>
               </div>
             ))}
-            <button
-              className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-full font-medium transition-all duration-200 btn-hover animate-fade-in-up"
-              style={{ animationDelay: "0.5s" }}
-            >
-              Start Mapping
-            </button>
+            <Link href="/contact">
+              <button
+                className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-full font-medium transition-all duration-200 btn-hover animate-fade-in-up"
+                style={{ animationDelay: "0.5s" }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Start Mapping
+              </button>
+            </Link>
           </div>
         </div>
       )}
