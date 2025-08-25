@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 interface HeroProps {
@@ -9,47 +9,38 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
-  // Animation variants
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: "easeOut" },
-  };
-
   return (
     <section className="relative min-h-screen overflow-hidden bg-black">
-      {/* Earth Background Image */}
+      {/* Optimized Background Image */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center transform scale-110"
-          style={{
-            backgroundImage: "url('/Earth.png')",
-            filter: "brightness(0.7) contrast(1.1)",
-          }}
+        <Image
+          src="/earth-optimized.webp" // Converted from Earth.png
+          alt="Earth from space showing geographical data"
+          fill
+          priority // Critical for LCP
+          quality={75} // Optimized quality
+          sizes="100vw"
+          className="object-cover scale-110 brightness-75 contrast-110"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
         />
-        {/* Updated gradient overlay with emerald tones */}
+
+        {/* Optimized gradient overlays using CSS instead of multiple divs */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/40 via-blue-900/30 to-black/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
       </div>
 
-      {/* Animated Stars/Particles */}
-      <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => (
-          <motion.div
+      {/* Optimized Stars - Reduced from 50 to 20 for better performance */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full"
+            className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              opacity: [0.2, 1, 0.2],
-              scale: [0.5, 1.2, 0.5],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 2,
+              animationDelay: `${Math.random() * 2}s`,
+              animationDuration: `${3 + Math.random() * 4}s`,
             }}
           />
         ))}
@@ -58,54 +49,34 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-8 py-20 min-h-screen flex items-center justify-center">
         <div className="max-w-4xl mx-auto">
-          {/* Centered Content */}
-          <motion.div
-            className="space-y-8 text-center"
-            initial="initial"
-            animate="animate"
-          >
-            {/* Main Headline */}
-            <motion.h1
-              className="text-5xl lg:text-7xl font-bold text-white leading-tight"
-              variants={fadeInUp}
-              style={{
-                background:
-                  "linear-gradient(135deg, #ffffff 0%, #10b981 50%, #059669 100%)",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              Think better with <span className="block">GeoLanka</span>
-            </motion.h1>
+          {/* Centered Content - Using CSS animations instead of Framer Motion */}
+          <div className="space-y-8 text-center animate-fade-in-up">
+            {/* Main Headline - Optimized gradient text */}
+            <h1 className="text-5xl lg:text-7xl font-sans font-bold text-white leading-tight">
+              <span className="bg-gradient-to-r from-white via-emerald-400 to-emerald-600 bg-clip-text text-transparent">
+                Think better with GeoLanka
+              </span>
+            </h1>
 
-            {/* Subtitle */}
-            <motion.p
-              className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
-              variants={fadeInUp}
-            >
+            {/* Subtitle - Removed Framer Motion */}
+            <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto animate-fade-in-up-delay-1">
               Never miss a location, insight or connection. Advanced geo-mapping
               that transforms how you explore and understand our world.
-            </motion.p>
+            </p>
 
-            {/* CTA Button */}
-            <motion.div className="pt-4" variants={fadeInUp}>
-              <motion.button
+            {/* CTA Button - CSS hover effects instead of Framer Motion */}
+            <div className="pt-4 animate-fade-in-up-delay-2">
+              <button
                 onClick={onExploreClick}
-                className="group bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center space-x-3 mx-auto"
-                whileHover={{ y: -3, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="group bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1 hover:scale-105 flex items-center space-x-3 mx-auto"
               >
                 <span>Let's Explore</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </motion.div>
+              </button>
+            </div>
 
-            {/* Feature Pills */}
-            <motion.div
-              className="flex flex-wrap gap-4 justify-center pt-6"
-              variants={fadeInUp}
-            >
+            {/* Feature Pills - Optimized animations */}
+            <div className="flex flex-wrap gap-4 justify-center pt-6 animate-fade-in-up-delay-3">
               <div className="flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                 <span className="text-sm text-white font-medium">
@@ -124,8 +95,8 @@ const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
                   Global Coverage
                 </span>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
 
