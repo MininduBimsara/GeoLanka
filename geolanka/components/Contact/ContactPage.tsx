@@ -23,7 +23,9 @@ const ContactPage = () => {
     message: "",
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -31,7 +33,7 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
   };
@@ -123,7 +125,7 @@ const ContactPage = () => {
                       {" "}
                       mapping journey
                     </span>
-                    ? Let's discuss your
+                    ? Let&apos;s discuss your
                     <span className="text-emerald-200 dark:text-emerald-300">
                       {" "}
                       requirements
@@ -194,16 +196,28 @@ const ContactPage = () => {
 
                 {/* Social Links */}
                 <div className="flex gap-3">
-                  <button className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
+                  <button
+                    type="button"
+                    className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors"
+                  >
                     <Facebook className="w-4 h-4" />
                   </button>
-                  <button className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
+                  <button
+                    type="button"
+                    className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors"
+                  >
                     <Twitter className="w-4 h-4" />
                   </button>
-                  <button className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
+                  <button
+                    type="button"
+                    className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors"
+                  >
                     <Linkedin className="w-4 h-4" />
                   </button>
-                  <button className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
+                  <button
+                    type="button"
+                    className="w-10 h-10 bg-white/20 dark:bg-black/20 rounded-lg flex items-center justify-center hover:bg-white/30 dark:hover:bg-black/30 transition-colors"
+                  >
                     <Instagram className="w-4 h-4" />
                   </button>
                 </div>
@@ -224,7 +238,7 @@ const ContactPage = () => {
                       Send us a message
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Tell us about your project and we'll get back to you
+                      Tell us about your project and we&apos;ll get back to you
                       within 24 hours
                     </p>
                   </div>
@@ -232,8 +246,9 @@ const ContactPage = () => {
                     action="https://formsubmit.co/minindubim@gmail.com"
                     method="POST"
                     className="space-y-6"
+                    onSubmit={handleSubmit}
                   >
-                    {/* FormSubmit.co Configuration - Fixed */}
+                    {/* FormSubmit.co Configuration */}
                     <input type="hidden" name="_captcha" value="false" />
                     <input
                       type="hidden"
@@ -241,11 +256,10 @@ const ContactPage = () => {
                       value="Thank you for contacting GeoLanka! We have received your message and will get back to you within 24 hours."
                     />
                     <input type="hidden" name="_template" value="table" />
-                    {/* Remove the duplicate _next field or set a specific URL */}
                     <input
                       type="hidden"
                       name="_next"
-                      value="https://yourdomain.com/thank-you"
+                      value="https://geolanka.vercel.app/thank-you"
                     />
                     {/* Honeypot field for spam protection */}
                     <input
@@ -263,6 +277,8 @@ const ContactPage = () => {
                           type="text"
                           name="name"
                           required
+                          value={formData.name}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="Enter your full name"
                         />
@@ -274,6 +290,8 @@ const ContactPage = () => {
                         <input
                           type="text"
                           name="company"
+                          value={formData.company}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="Your company name"
                         />
@@ -288,6 +306,8 @@ const ContactPage = () => {
                         <input
                           type="tel"
                           name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="+94 XX XXX XXXX"
                         />
@@ -300,6 +320,8 @@ const ContactPage = () => {
                           type="email"
                           name="email"
                           required
+                          value={formData.email}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                           placeholder="your@email.com"
                         />
@@ -314,6 +336,8 @@ const ContactPage = () => {
                         type="text"
                         name="subject"
                         required
+                        value={formData.subject}
+                        onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white transition-all"
                         placeholder="What can we help you with?"
                       />
@@ -327,6 +351,8 @@ const ContactPage = () => {
                         name="message"
                         required
                         rows={6}
+                        value={formData.message}
+                        onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-[#0a0c0b] text-gray-900 dark:text-white resize-none transition-all"
                         placeholder="Tell us about your project, requirements, or any questions you have..."
                       />
@@ -361,10 +387,11 @@ const ContactPage = () => {
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
-                      allowFullScreen=""
+                      allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                       className="w-full h-full"
+                      title="GeoLanka Office Location"
                     />
                   </div>
                 </div>

@@ -8,7 +8,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
  */
 export const useInView = (options = {}) => {
   const [isInView, setIsInView] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
