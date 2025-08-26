@@ -75,7 +75,7 @@ const nextConfig = {
   },
 
   // Enable SWC minification for better performance
-  swcMinify: true,
+  // swcMinify: true,
 
   // Generate static files for better caching
   generateEtags: false,
