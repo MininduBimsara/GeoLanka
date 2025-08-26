@@ -259,7 +259,7 @@ const ContactPage = () => {
                     <input
                       type="hidden"
                       name="_next"
-                      value="https://geolanka.vercel.app/thank-you"
+                      value="https://geolanka-app.vercel.app/contact"
                     />
                     {/* Honeypot field for spam protection */}
                     <input
