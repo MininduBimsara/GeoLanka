@@ -3,7 +3,47 @@
 import React from "react";
 import { MapPin } from "lucide-react";
 
-const HeroHeader = ({ activeTab, setActiveTab, features }) => {
+// Define the types
+type FeatureId = "mobile" | "dashboard" | "reports";
+
+interface Feature {
+  id: FeatureId;
+  title: string;
+  subtitle: string;
+  mainCard: {
+    image: string;
+    title: string;
+    rating: number;
+    location: string;
+    icon: React.ComponentType<any>;
+  };
+  sideCards: Array<{
+    image: string;
+    title: string;
+    rating: number;
+    location: string;
+  }>;
+  weather: string;
+  pricing: string;
+  availability: string;
+  mapPins: Array<{
+    x: number;
+    y: number;
+    active: boolean;
+  }>;
+}
+
+interface HeroHeaderProps {
+  activeTab: FeatureId;
+  setActiveTab: (tab: FeatureId) => void;
+  features: Record<FeatureId, Feature>;
+}
+
+const HeroHeader: React.FC<HeroHeaderProps> = ({
+  activeTab,
+  setActiveTab,
+  features,
+}) => {
   return (
     <div className="relative">
       {/* Hero Section with Sri Lankan Landscape */}

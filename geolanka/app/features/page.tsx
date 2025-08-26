@@ -44,13 +44,45 @@ const ContentSkeleton = () => (
   </div>
 );
 
+// Define the feature types
+type FeatureId = "mobile" | "dashboard" | "reports";
+
+interface Feature {
+  id: FeatureId;
+  title: string;
+  subtitle: string;
+  mainCard: {
+    image: string;
+    title: string;
+    rating: number;
+    location: string;
+    icon: React.ComponentType<any>;
+  };
+  sideCards: Array<{
+    image: string;
+    title: string;
+    rating: number;
+    location: string;
+  }>;
+  weather: string;
+  pricing: string;
+  availability: string;
+  mapPins: Array<{
+    x: number;
+    y: number;
+    active: boolean;
+  }>;
+}
+
+type FeaturesRecord = Record<FeatureId, Feature>;
+
 export default function Features() {
-  const [activeTab, setActiveTab] = useState("mobile");
+  const [activeTab, setActiveTab] = useState<FeatureId>("mobile");
   const [contentRef, contentClassName] =
     useScrollAnimation("animate-fade-in-up");
 
   // Optimized features data structure - memoized to prevent recreation
-  const features = React.useMemo(
+  const features = React.useMemo<FeaturesRecord>(
     () => ({
       mobile: {
         id: "mobile",
