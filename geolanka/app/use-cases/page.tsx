@@ -2,6 +2,7 @@
 
 import React, { Suspense } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   Shield,
   TreePine,
@@ -9,7 +10,6 @@ import {
   Building,
   ArrowRight,
   MapPin,
-  Satellite,
   Users,
 } from "lucide-react";
 import {
@@ -18,6 +18,7 @@ import {
 } from "@/hooks/usePerformanceOptimizations";
 
 const UseCasesPage = () => {
+  const router = useRouter();
   const [heroRef, isHeroInView] = useInView({ once: true });
   const [gridRef, gridClassName] = useScrollAnimation("animate-fade-in-up");
   const [testimonialRef, testimonialClassName] =
@@ -387,14 +388,13 @@ const UseCasesPage = () => {
               See how our platform can support your project with precise
               geo-mapping solutions tailored for Sri Lanka's unique landscape.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-gray-800 px-8 py-4 rounded-full font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-shadow btn-hover">
+            <div className="flex justify-center">
+              <button
+                onClick={() => router.push("/contact")}
+                className="bg-white text-gray-800 px-8 py-4 rounded-full font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-shadow btn-hover"
+              >
                 <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="border border-white text-white px-8 py-4 rounded-full font-semibold flex items-center justify-center space-x-2 hover:bg-white/10 transition-colors btn-hover">
-                <Satellite className="w-4 h-4" />
-                <span>View Demo</span>
               </button>
             </div>
           </div>
